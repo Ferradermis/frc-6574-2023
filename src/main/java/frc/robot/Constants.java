@@ -76,7 +76,7 @@ public final class Constants {
          * Divide SYSID values by 12 to convert from volts to percent output for CTRE */
         public static final double driveKS = (0.112 / 12); //TODO: This must be tuned to specific robot
         public static final double driveKV = (2.278 / 12);
-        public static final double driveKA = (0.248 / 12);
+        public static final double driveKA = (0.248/ 12);
 
         /* Swerve Profiling Values */
         /** Meters per Second */
@@ -131,6 +131,7 @@ public final class Constants {
     }
 
     public static final class AutoConstants { //TODO: The below constants are used in the example auto, and must be tuned to specific robot
+
         public static final double kMaxSpeedMetersPerSecond = 3;
         public static final double kMaxAccelerationMetersPerSecondSquared = 3;
         public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
@@ -144,5 +145,12 @@ public final class Constants {
         public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
             new TrapezoidProfile.Constraints(
                 kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
+    }
+    public static final class RobotConstants {
+        public static final int elevatorLeftMotorCANID = 19;
+        public static final int elevatorRightMotorCANID = 11;
+        public static final int wristMotorCANID = 26;
+        public static final int armMotorCANID = 25;
+        public static final int intakeMotorCANID = 1;
     }
 }
