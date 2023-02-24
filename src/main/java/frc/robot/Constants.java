@@ -152,5 +152,27 @@ public final class Constants {
         public static final int wristMotorCANID = 3;
         public static final int armMotorCANID = 2;
         public static final int intakeMotorCANID = 1;
+
+        /* Cone position constants */ 
+        public static final double WRIST_CONE_FLOOR_INTAKE_POSITION = 0;
+        public static final double WRIST_CONE_LOWSCORE_POSITION = 0;
+        public static final double WRIST_CONE_MIDSCORE_POSITION = 0;
+        public static final double WRIST_CONE_HIGHSCORE_POSITION = 0;
+
+        public static final double ARM_CONE_FLOOR_INTAKE_POSITION = 0;
+        public static final double ARM_CONE_LOWSCORE_POSITION = 0;
+        public static final double ARM_CONE_MIDSCORE_POSITION = 0;
+        public static final double ARM_CONE_HIGHSCORE_POSITION = 0;
+
+        /* Cube position constants */ 
+        public static final double WRIST_CUBE_FLOOR_INTAKE_POSITION = 0;
+        public static final double WRIST_CUBE_LOWSCORE_POSITION = 0;
+        public static final double WRIST_CUBE_MIDSCORE_POSITION = 0;
+        public static final double WRIST_CUBE_HIGHSCORE_POSITION = 0;
+
+        public static final double ARM_CUBE_FLOOR_INTAKE_POSITION = 0;
+        public static final double ARM_CUBE_LOWSCORE_POSITION = 0;
+        public static final double ARM_CUBE_MIDSCORE_POSITION = 0;
+        public static final double ARM_CUBE_HIGHSCORE_POSITION = 0;
     }
 }

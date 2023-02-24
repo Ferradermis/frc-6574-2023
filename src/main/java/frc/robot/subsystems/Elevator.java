@@ -4,12 +4,11 @@
 
 package frc.robot.subsystems;
 
-import javax.lang.model.util.ElementScanner14;
-
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxLimitSwitch;
 import com.revrobotics.SparkMaxPIDController;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -21,19 +20,21 @@ public class Elevator extends SubsystemBase {
 
   public CANSparkMax leftMotor;
   public CANSparkMax rightMotor;
+  private SparkMaxLimitSwitch elevatorReverseLimit;
 
   private SparkMaxPIDController elevatorPIDController;
   private RelativeEncoder elevatorEncoder;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
 
   private double maxSpeed = 0.25;
-  private double deadBand = 0.1;
-  private double maxElevatorExtension = 32.36;
+  private float maxElevatorExtension = 32;
 
   /** Creates a new Elevator. Gatorvator*/
   public Elevator() {
     leftMotor = new CANSparkMax(Constants.RobotConstants.elevatorLeftMotorCANID, MotorType.kBrushless);
     rightMotor = new CANSparkMax(Constants.RobotConstants.elevatorRightMotorCANID, MotorType.kBrushless);
+
+    elevatorReverseLimit = leftMotor.getReverseLimitSwitch(SparkMaxLimitSwitch.Type.kNormallyClosed);
 
     leftMotor.restoreFactoryDefaults();
     rightMotor.restoreFactoryDefaults();
@@ -42,10 +43,17 @@ public class Elevator extends SubsystemBase {
     rightMotor.setIdleMode(IdleMode.kBrake);
 
     leftMotor.setSmartCurrentLimit(25);
+    rightMotor.setSmartCurrentLimit(25);
 
     leftMotor.setInverted(false);
 
     rightMotor.follow(leftMotor, true);
+
+    leftMotor.enableSoftLimit(CANSparkMax.SoftLimitDirection.kForward, true);
+
+    leftMotor.setSoftLimit(CANSparkMax.SoftLimitDirection.kForward, maxElevatorExtension);
+
+    leftMotor.getEncoder().setPosition(0);
 
     elevatorPIDController = leftMotor.getPIDController();
     elevatorEncoder = leftMotor.getEncoder();
@@ -72,9 +80,6 @@ public class Elevator extends SubsystemBase {
   }
 
   public void setPosition(double position) {
-    if (position > maxElevatorExtension) {
-      position = 16;
-    }
     elevatorPIDController.setReference(position, CANSparkMax.ControlType.kPosition);
   }
 
@@ -86,6 +91,7 @@ public class Elevator extends SubsystemBase {
   @Override
   public void periodic() {
 
+    elevatorReverseLimit.enableLimitSwitch(true);
     SmartDashboard.putNumber("Elevator encoder", leftMotor.getEncoder().getPosition());
 
     if (RobotContainer.operator.getRawButtonPressed(3)) {

@@ -36,9 +36,11 @@ public class Wrist extends SubsystemBase {
     intakeMotor.restoreFactoryDefaults();
 
     m_AbsoluteEncoder = wristMotor.getAbsoluteEncoder(Type.kDutyCycle);
-    
     wristPIDController = wristMotor.getPIDController();
     wristPIDController.setFeedbackDevice(m_AbsoluteEncoder);
+
+    m_AbsoluteEncoder.setPositionConversionFactor(360);
+    m_AbsoluteEncoder.setVelocityConversionFactor(1);
 
     wristMotor.setIdleMode(IdleMode.kBrake);
     intakeMotor.setIdleMode(IdleMode.kBrake);
@@ -46,13 +48,13 @@ public class Wrist extends SubsystemBase {
     wristMotor.setSmartCurrentLimit(25);
     intakeMotor.setSmartCurrentLimit(25);
 
-    kP = 0.1; 
+    kP = 0.8; 
     kI = 0;
     kD = 0; 
     kIz = 0; 
     kFF = 0; 
-    kMaxOutput = .5; 
-    kMinOutput = -.5;
+    kMaxOutput = .25; 
+    kMinOutput = -.25;
     
     wristPIDController.setP(kP);
     wristPIDController.setI(kI);
@@ -107,8 +109,8 @@ public class Wrist extends SubsystemBase {
     return m_AbsoluteEncoder.getPosition();
   }
 
-  public void setPosition() {
-    wristPIDController.setReference(deadBand, CANSparkMax.ControlType.kPosition);
+  public void setPosition(double position) {
+    wristPIDController.setReference(position, CANSparkMax.ControlType.kPosition);
   }
   
 }
