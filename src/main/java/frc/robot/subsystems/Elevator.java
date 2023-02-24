@@ -4,12 +4,15 @@
 
 package frc.robot.subsystems;
 
+import javax.lang.model.util.ElementScanner14;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxPIDController;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
@@ -25,6 +28,7 @@ public class Elevator extends SubsystemBase {
 
   private double maxSpeed = 0.25;
   private double deadBand = 0.1;
+  private double maxElevatorExtension = 32.36;
 
   /** Creates a new Elevator. Gatorvator*/
   public Elevator() {
@@ -37,6 +41,8 @@ public class Elevator extends SubsystemBase {
     leftMotor.setIdleMode(IdleMode.kBrake);
     rightMotor.setIdleMode(IdleMode.kBrake);
 
+    leftMotor.setSmartCurrentLimit(25);
+
     leftMotor.setInverted(false);
 
     rightMotor.follow(leftMotor, true);
@@ -45,12 +51,12 @@ public class Elevator extends SubsystemBase {
     elevatorEncoder = leftMotor.getEncoder();
 
     kP = 0.1; 
-    kI = 1e-4;
-    kD = 1; 
+    kI = 0;
+    kD = 0; 
     kIz = 0; 
     kFF = 0; 
-    kMaxOutput = 1; 
-    kMinOutput = -1;
+    kMaxOutput = .5; 
+    kMinOutput = -.5;
 
     elevatorPIDController.setP(kP);
     elevatorPIDController.setI(kI);
@@ -66,6 +72,9 @@ public class Elevator extends SubsystemBase {
   }
 
   public void setPosition(double position) {
+    if (position > maxElevatorExtension) {
+      position = 16;
+    }
     elevatorPIDController.setReference(position, CANSparkMax.ControlType.kPosition);
   }
 
@@ -73,19 +82,30 @@ public class Elevator extends SubsystemBase {
     leftMotor.stopMotor();
     rightMotor.stopMotor();
   }
+
   @Override
   public void periodic() {
-    /* 
-    if (RobotContainer.operator.getRawAxis(1) > deadBand) {
-      leftMotor.set(-RobotContainer.operator.getRawAxis(1) * maxSpeed);
-    } else if (RobotContainer.operator.getRawAxis(1) < -deadBand) {
-      leftMotor.set(-RobotContainer.operator.getRawAxis(1) * maxSpeed);
-    } else {
-      leftMotor.stopMotor();
+
+    SmartDashboard.putNumber("Elevator encoder", leftMotor.getEncoder().getPosition());
+
+    if (RobotContainer.operator.getRawButtonPressed(3)) {
+      leftMotor.set(.25);
     }
-*/
+      else if (RobotContainer.operator.getRawButtonReleased(3)) {
+        leftMotor.set(0);
+      }
+
+      if (RobotContainer.operator.getRawButtonPressed(4)) {
+        leftMotor.set(-.25);
+      }
+      else if (RobotContainer.operator.getRawButtonReleased(4)) {
+        leftMotor.set(0);
+      }
+    }
+
+
     // This method will be called once per scheduler run
   }
 
 
-}
+

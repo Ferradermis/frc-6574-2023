@@ -149,8 +149,8 @@ public final class Constants {
     public static final class RobotConstants {
         public static final int elevatorLeftMotorCANID = 19;
         public static final int elevatorRightMotorCANID = 11;
-        public static final int wristMotorCANID = 26;
-        public static final int armMotorCANID = 25;
+        public static final int wristMotorCANID = 3;
+        public static final int armMotorCANID = 2;
         public static final int intakeMotorCANID = 1;
     }
 }
