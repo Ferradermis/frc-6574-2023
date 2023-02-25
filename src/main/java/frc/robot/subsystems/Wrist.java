@@ -6,10 +6,11 @@ package frc.robot.subsystems;
 
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.SparkMaxPIDController;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxAbsoluteEncoder.Type;
+import com.revrobotics.SparkMaxPIDController;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -21,6 +22,7 @@ public class Wrist extends SubsystemBase {
   public static CANSparkMax wristMotor;
   public static CANSparkMax intakeMotor;
   public static AbsoluteEncoder m_AbsoluteEncoder;
+  private RelativeEncoder wristEncoder;
 
   private SparkMaxPIDController wristPIDController;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
@@ -39,8 +41,8 @@ public class Wrist extends SubsystemBase {
     wristPIDController = wristMotor.getPIDController();
     wristPIDController.setFeedbackDevice(m_AbsoluteEncoder);
 
-    m_AbsoluteEncoder.setPositionConversionFactor(360);
-    m_AbsoluteEncoder.setVelocityConversionFactor(1);
+    //m_AbsoluteEncoder.setPositionConversionFactor(360);
+    //m_AbsoluteEncoder.setVelocityConversionFactor(1);
 
     wristMotor.setIdleMode(IdleMode.kBrake);
     intakeMotor.setIdleMode(IdleMode.kBrake);
@@ -48,13 +50,13 @@ public class Wrist extends SubsystemBase {
     wristMotor.setSmartCurrentLimit(80);
     intakeMotor.setSmartCurrentLimit(80);
 
-    kP = -.012;
+    kP = -.01;
     kI = 0;
     kD = 0; 
     kIz = 0; 
-    kFF = .07 * Math.cos(360 * getAbsoluteEncoderCounts()); 
-    kMaxOutput = .15; 
-    kMinOutput = -.15;
+    kFF = 0; 
+    kMaxOutput = .1; 
+    kMinOutput = -.1;
     
     wristPIDController.setP(kP);
     wristPIDController.setI(kI);
@@ -67,14 +69,16 @@ public class Wrist extends SubsystemBase {
   @Override
 
   public void periodic() {
-    SmartDashboard.putNumber("Wrist", getAbsoluteEncoderCounts());
-    SmartDashboard.putNumber("Wrist Joystick", RobotContainer.operator.getRawAxis(5));
-    
-    /*    if (RobotContainer.operator.getRawAxis(5) > deadBand) {
+    //SmartDashboard.putNumber("Wrist", getAbsoluteEncoderCounts());
+    //SmartDashboard.putNumber("Wrist Joystick", RobotContainer.operator.getRawAxis(5));
+    SmartDashboard.putNumber("Wrist encoder", wristMotor.getEncoder().getPosition());
+
+    if (RobotContainer.operator.getRawAxis(5) > deadBand) {
       wristMotor.set(-RobotContainer.operator.getRawAxis(5) * maxSpeed);
     } else if (RobotContainer.operator.getRawAxis(5) < -deadBand) {
       wristMotor.set(-RobotContainer.operator.getRawAxis(5) * maxSpeed);
-    }  */   
+    }
+
 
     
 
@@ -105,11 +109,11 @@ public class Wrist extends SubsystemBase {
   {
     wristMotor.stopMotor();
   }
-
-  public double getAbsoluteEncoderCounts()
+/*   public double getAbsoluteEncoderCounts()
   {
     return m_AbsoluteEncoder.getPosition();
-  }
+  } */
+
 
   public void setPosition(double position) {
     wristPIDController.setReference(position, CANSparkMax.ControlType.kPosition);
