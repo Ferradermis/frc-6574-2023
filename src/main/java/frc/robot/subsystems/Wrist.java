@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
+import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxAbsoluteEncoder.Type;
@@ -22,7 +23,7 @@ public class Wrist extends SubsystemBase {
   public static CANSparkMax wristMotor;
   public static CANSparkMax intakeMotor;
   public static AbsoluteEncoder m_AbsoluteEncoder;
-  private RelativeEncoder wristEncoder;
+  //private RelativeEncoder wristEncoder;
 
   private SparkMaxPIDController wristPIDController;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
@@ -37,9 +38,10 @@ public class Wrist extends SubsystemBase {
     wristMotor.restoreFactoryDefaults();
     intakeMotor.restoreFactoryDefaults();
 
-    m_AbsoluteEncoder = wristMotor.getAbsoluteEncoder(Type.kDutyCycle);
     wristPIDController = wristMotor.getPIDController();
+    m_AbsoluteEncoder = wristMotor.getAbsoluteEncoder(Type.kDutyCycle);
     wristPIDController.setFeedbackDevice(m_AbsoluteEncoder);
+
 
     //m_AbsoluteEncoder.setPositionConversionFactor(360);
     //m_AbsoluteEncoder.setVelocityConversionFactor(1);
@@ -64,6 +66,10 @@ public class Wrist extends SubsystemBase {
     wristPIDController.setIZone(kIz);
     wristPIDController.setFF(kFF);
     wristPIDController.setOutputRange(kMinOutput, kMaxOutput);
+
+    wristPIDController.setPositionPIDWrappingEnabled(true);
+    wristPIDController.setPositionPIDWrappingMinInput(0);
+    wristPIDController.setPositionPIDWrappingMaxInput(1);
   }
 
   @Override
