@@ -45,16 +45,16 @@ public class Wrist extends SubsystemBase {
     wristMotor.setIdleMode(IdleMode.kBrake);
     intakeMotor.setIdleMode(IdleMode.kBrake);
 
-    wristMotor.setSmartCurrentLimit(25);
-    intakeMotor.setSmartCurrentLimit(25);
+    wristMotor.setSmartCurrentLimit(80);
+    intakeMotor.setSmartCurrentLimit(80);
 
-    kP = 0.8; 
+    kP = -.012;
     kI = 0;
     kD = 0; 
     kIz = 0; 
-    kFF = 0; 
-    kMaxOutput = .25; 
-    kMinOutput = -.25;
+    kFF = .07 * Math.cos(360 * getAbsoluteEncoderCounts()); 
+    kMaxOutput = .15; 
+    kMinOutput = -.15;
     
     wristPIDController.setP(kP);
     wristPIDController.setI(kI);
@@ -68,14 +68,16 @@ public class Wrist extends SubsystemBase {
 
   public void periodic() {
     SmartDashboard.putNumber("Wrist", getAbsoluteEncoderCounts());
+    SmartDashboard.putNumber("Wrist Joystick", RobotContainer.operator.getRawAxis(5));
     
-    if (RobotContainer.operator.getRawAxis(5) > deadBand) {
+    /*    if (RobotContainer.operator.getRawAxis(5) > deadBand) {
       wristMotor.set(-RobotContainer.operator.getRawAxis(5) * maxSpeed);
     } else if (RobotContainer.operator.getRawAxis(5) < -deadBand) {
       wristMotor.set(-RobotContainer.operator.getRawAxis(5) * maxSpeed);
-    } else {
-      wristMotor.stopMotor();
-    }
+    }  */   
+
+    
+
 
     if (RobotContainer.operator.getRawButtonPressed(1)) {
       intakeMotor.set(1);

@@ -71,7 +71,7 @@ public class RobotContainer {
 
         /* Operator Buttons */
         elevatorPositionTest.onTrue(new InstantCommand(() -> elevator.setPosition(15)));
-        wristPositionTest.onTrue(new InstantCommand(() -> wrist.setPosition(35)));
+        wristPositionTest.onTrue(new InstantCommand(() -> wrist.setPosition(45)));
     }
 
     /**

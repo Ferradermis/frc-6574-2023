@@ -95,14 +95,14 @@ public class Elevator extends SubsystemBase {
     SmartDashboard.putNumber("Elevator encoder", leftMotor.getEncoder().getPosition());
 
     if (RobotContainer.operator.getRawButtonPressed(3)) {
-      leftMotor.set(.25);
+      leftMotor.set(.15);
     }
       else if (RobotContainer.operator.getRawButtonReleased(3)) {
         leftMotor.set(0);
       }
 
       if (RobotContainer.operator.getRawButtonPressed(4)) {
-        leftMotor.set(-.25);
+        leftMotor.set(-.15);
       }
       else if (RobotContainer.operator.getRawButtonReleased(4)) {
         leftMotor.set(0);
