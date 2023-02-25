@@ -25,6 +25,21 @@ public class SwerveModule {
 
     SimpleMotorFeedforward feedforward = new SimpleMotorFeedforward(Constants.Swerve.driveKS, Constants.Swerve.driveKV, Constants.Swerve.driveKA);
 
+
+	
+    public double makePositiveDegrees(double anAngle ){
+        double degrees = anAngle;
+        degrees = degrees % 360;
+        if (degrees < 0.0){
+            degrees = degrees + 360;
+        }
+        return degrees;
+    }
+
+    public double makePositiveDegrees(Rotation2d anAngle){
+        return makePositiveDegrees(anAngle.getDegrees());
+    }
+
     public SwerveModule(int moduleNumber, SwerveModuleConstants moduleConstants){
         this.moduleNumber = moduleNumber;
         this.angleOffset = moduleConstants.angleOffset;
@@ -62,9 +77,10 @@ public class SwerveModule {
         }
     }
 
-    private void setAngle(SwerveModuleState desiredState){
+private void setAngle(SwerveModuleState desiredState){
         Rotation2d angle = (Math.abs(desiredState.speedMetersPerSecond) <= (Constants.Swerve.maxSpeed * 0.01)) ? lastAngle : desiredState.angle; //Prevent rotating module if speed is less then 1%. Prevents Jittering.
-        
+        Rotation2d oldAngle = getAngle();
+        angle = optimizeTurn(oldAngle, angle);  
         mAngleMotor.set(ControlMode.Position, Conversions.degreesToFalcon(angle.getDegrees(), Constants.Swerve.angleGearRatio));
         lastAngle = angle;
     }
@@ -123,19 +139,7 @@ public class SwerveModule {
             getAngle()
         );
     }
-    public double makePositiveDegrees(Rotation2d anAngle){
-        return makePositiveDegrees(anAngle.getDegrees());
-    }
-	
-    public double makePositiveDegrees(double anAngle ){
-        double degrees = anAngle;
-        degrees = degrees % 360;
-        if (degrees < 0.0){
-            degrees = degrees + 360;
-        }
-        return degrees;
 
-    }
 
     public Rotation2d optimizeTurn(Rotation2d oldAngle, Rotation2d newAngle){
         double steerAngle = makePositiveDegrees(newAngle);

@@ -31,7 +31,8 @@ public class RobotContainer {
     private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
     private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
     private final JoystickButton elevatorPositionTest = new JoystickButton(operator, XboxController.Button.kLeftBumper.value);
-    private final JoystickButton armPositionTest = new JoystickButton(operator, XboxController.Button.kRightBumper.value);
+    //private final JoystickButton armPositionTest = new JoystickButton(operator, XboxController.Button.kRightBumper.value);
+    private final JoystickButton wristPositionTest = new JoystickButton(operator, XboxController.Button.kRightBumper.value);
 
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
@@ -70,7 +71,7 @@ public class RobotContainer {
 
         /* Operator Buttons */
         elevatorPositionTest.onTrue(new InstantCommand(() -> elevator.setPosition(15)));
-        armPositionTest.onTrue(new InstantCommand(() -> arm.setPosition(.1)));
+        wristPositionTest.onTrue(new InstantCommand(() -> wrist.setPosition(.35)));
     }
 
     /**

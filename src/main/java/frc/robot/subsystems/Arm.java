@@ -9,7 +9,6 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxAbsoluteEncoder.Type;
 import com.revrobotics.SparkMaxPIDController;
 
@@ -42,6 +41,8 @@ public class Arm extends SubsystemBase {
     armMotor.setIdleMode(IdleMode.kBrake);
     armMotor.setInverted(true);
     armMotor.setSmartCurrentLimit(25);
+    m_AbsoluteEncoder.setZeroOffset(0.2721140);
+    
 
     //armMotor.getEncoder().setPosition(0);
 

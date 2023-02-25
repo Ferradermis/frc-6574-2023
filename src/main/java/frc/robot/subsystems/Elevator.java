@@ -7,7 +7,6 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxLimitSwitch;
 import com.revrobotics.SparkMaxPIDController;
 
@@ -23,7 +22,6 @@ public class Elevator extends SubsystemBase {
   private SparkMaxLimitSwitch elevatorReverseLimit;
 
   private SparkMaxPIDController elevatorPIDController;
-  private RelativeEncoder elevatorEncoder;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
 
   private double maxSpeed = 0.25;
@@ -56,7 +54,7 @@ public class Elevator extends SubsystemBase {
     leftMotor.getEncoder().setPosition(0);
 
     elevatorPIDController = leftMotor.getPIDController();
-    elevatorEncoder = leftMotor.getEncoder();
+    leftMotor.getEncoder();
 
     kP = 0.1; 
     kI = 0;

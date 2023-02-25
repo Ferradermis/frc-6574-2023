@@ -7,9 +7,7 @@ package frc.robot.subsystems;
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
-import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxAbsoluteEncoder.Type;
 import com.revrobotics.SparkMaxPIDController;
 
@@ -45,20 +43,22 @@ public class Wrist extends SubsystemBase {
 
     //m_AbsoluteEncoder.setPositionConversionFactor(360);
     //m_AbsoluteEncoder.setVelocityConversionFactor(1);
-
+    wristMotor.setInverted(true);
     wristMotor.setIdleMode(IdleMode.kBrake);
     intakeMotor.setIdleMode(IdleMode.kBrake);
+    m_AbsoluteEncoder.setZeroOffset(0.6526145);
+
 
     wristMotor.setSmartCurrentLimit(80);
     intakeMotor.setSmartCurrentLimit(80);
 
-    kP = -.01;
+    kP = 2;
     kI = 0;
     kD = 0; 
     kIz = 0; 
     kFF = 0; 
-    kMaxOutput = .1; 
-    kMinOutput = -.1;
+    kMaxOutput = .5; 
+    kMinOutput = -.5;
     
     wristPIDController.setP(kP);
     wristPIDController.setI(kI);
