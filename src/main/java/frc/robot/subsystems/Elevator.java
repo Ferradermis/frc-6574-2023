@@ -20,7 +20,6 @@ public class Elevator extends SubsystemBase {
   public CANSparkMax leftMotor;
   public CANSparkMax rightMotor;
   private SparkMaxLimitSwitch elevatorReverseLimit;
-
   private SparkMaxPIDController elevatorPIDController;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
 
@@ -56,7 +55,7 @@ public class Elevator extends SubsystemBase {
     elevatorPIDController = leftMotor.getPIDController();
     leftMotor.getEncoder();
 
-    kP = 0.1; 
+    kP = 0.15; 
     kI = 0;
     kD = 0; 
     kIz = 0; 
@@ -92,7 +91,7 @@ public class Elevator extends SubsystemBase {
     elevatorReverseLimit.enableLimitSwitch(true);
     SmartDashboard.putNumber("Elevator encoder", leftMotor.getEncoder().getPosition());
 
-    if (RobotContainer.operator.getRawButtonPressed(3)) {
+    /*     if (RobotContainer.operator.getRawButtonPressed(3)) {
       leftMotor.set(.15);
     }
       else if (RobotContainer.operator.getRawButtonReleased(3)) {
@@ -104,7 +103,8 @@ public class Elevator extends SubsystemBase {
       }
       else if (RobotContainer.operator.getRawButtonReleased(4)) {
         leftMotor.set(0);
-      }
+      } */
+
     }
 
 

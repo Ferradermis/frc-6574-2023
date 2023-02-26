@@ -158,18 +158,19 @@ public final class Constants {
         /* Elevator Position constants */
 
         public static final double ELEVATOR_HOME_POSITION = 0;
+        public static final double ELEVATOR_INTAKECUBE_POSITION = 2.85;
         public static final double ELEVATOR_LOW_POSITION = 0;
         public static final double ELEVATOR_MID_POSITION = 15.00;
         public static final double ELEVATOR_HIGH_POSITION = 0;
 
         /* Wrist position constants */ 
         public static final double WRIST_HOME_POSITION = 0;
-        public static final double WRIST_CONE_FLOOR_INTAKE_POSITION = 0;
+        public static final double WRIST_CONE_FLOOR_INTAKE_POSITION = .18;
         public static final double WRIST_CONE_LOWSCORE_POSITION = 0;
         public static final double WRIST_CONE_MIDSCORE_POSITION = 0;
         public static final double WRIST_CONE_HIGHSCORE_POSITION = 0;
 
-        public static final double WRIST_CUBE_FLOOR_INTAKE_POSITION = 0;
+        public static final double WRIST_CUBE_FLOOR_INTAKE_POSITION = .26;
         public static final double WRIST_CUBE_LOWSCORE_POSITION = 0;
         public static final double WRIST_CUBE_MIDSCORE_POSITION = 0;
         public static final double WRIST_CUBE_HIGHSCORE_POSITION = 0;
@@ -181,7 +182,7 @@ public final class Constants {
         public static final double ARM_CONE_MIDSCORE_POSITION = 0;
         public static final double ARM_CONE_HIGHSCORE_POSITION = 0;
 
-        public static final double ARM_CUBE_FLOOR_INTAKE_POSITION = 0;
+        public static final double ARM_CUBE_FLOOR_INTAKE_POSITION = .026;
         public static final double ARM_CUBE_LOWSCORE_POSITION = 0;
         public static final double ARM_CUBE_MIDSCORE_POSITION = 0;
         public static final double ARM_CUBE_HIGHSCORE_POSITION = 0;

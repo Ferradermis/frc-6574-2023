@@ -8,9 +8,11 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.autos.exampleAuto;
+import frc.robot.commands.IntakeConeFromFloor;
+import frc.robot.commands.IntakeCubeFromFloor;
+import frc.robot.commands.ReturnWAEHome;
 import frc.robot.commands.TeleopSwerve;
-import frc.robot.commands.ElevatorCommands.SetElevatorPosition;
-import frc.robot.commands.WristCommands.SetWristPosition;
+import frc.robot.commands.WristCommands.setWristIntakeSpeed;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Swerve;
@@ -96,8 +98,15 @@ public class RobotContainer {
         //elevatorPositionTest.onTrue(new SetElevatorPosition(Constants.RobotConstants.ELEVATOR_MID_POSITION));
         //ewristPositionTest.onTrue(new SetWristPosition(.35));
 
-        operatorController.leftBumper().onTrue(new SetElevatorPosition(Constants.RobotConstants.ELEVATOR_MID_POSITION));
-        operatorController.rightBumper().onTrue(new SetWristPosition(.35));
+        //operatorController.leftBumper().onTrue(new SetElevatorPosition(Constants.RobotConstants.ELEVATOR_INTAKECUBE_POSITION));
+        //operatorController.rightBumper().onTrue(new SetWristPosition(Constants.RobotConstants.WRIST_CUBE_FLOOR_INTAKE_POSITION));
+        //operatorController.x().onTrue(new SetArmPosition(Constants.RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION));
+        operatorController.a().onTrue(new IntakeCubeFromFloor());
+        operatorController.leftBumper().onTrue(new IntakeConeFromFloor());
+        operatorController.b().onTrue(new ReturnWAEHome());
+        operatorController.x().whileTrue(new setWristIntakeSpeed(1));
+        operatorController.y().whileTrue(new setWristIntakeSpeed(-1));
+
     }
 
     /**

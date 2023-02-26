@@ -50,9 +50,9 @@ public class Wrist extends SubsystemBase {
 
 
     wristMotor.setSmartCurrentLimit(80);
-    intakeMotor.setSmartCurrentLimit(80);
+    intakeMotor.setSmartCurrentLimit(25);
 
-    kP = 2;
+    kP = 2.5;
     kI = 0;
     kD = 0; 
     kIz = 0; 
@@ -75,21 +75,19 @@ public class Wrist extends SubsystemBase {
   @Override
 
   public void periodic() {
-    //SmartDashboard.putNumber("Wrist", getAbsoluteEncoderCounts());
+    SmartDashboard.putNumber("Wrist", getAbsoluteEncoderPosition());
     //SmartDashboard.putNumber("Wrist Joystick", RobotContainer.operator.getRawAxis(5));
-    SmartDashboard.putNumber("Wrist encoder", wristMotor.getEncoder().getPosition());
+    //SmartDashboard.putNumber("Wrist encoder", wristMotor.getEncoder().getPosition());
 
-    if (RobotContainer.operator.getRawAxis(5) > deadBand) {
+    /* if (RobotContainer.operator.getRawAxis(5) > deadBand) {
       wristMotor.set(-RobotContainer.operator.getRawAxis(5) * maxSpeed);
     } else if (RobotContainer.operator.getRawAxis(5) < -deadBand) {
       wristMotor.set(-RobotContainer.operator.getRawAxis(5) * maxSpeed);
-    }
+    } */
 
 
     
-
-
-    if (RobotContainer.operator.getRawButtonPressed(1)) {
+    /* if (RobotContainer.operator.getRawButtonPressed(1)) {
       intakeMotor.set(1);
     }
       else if (RobotContainer.operator.getRawButtonReleased(1)) {
@@ -101,10 +99,19 @@ public class Wrist extends SubsystemBase {
       }
       else if (RobotContainer.operator.getRawButtonReleased(2)) {
         intakeMotor.set(0);
-      }
+      } */
+
+
     }
     
   
+  public void setIntakeSpeed(double speed) {
+    intakeMotor.set(speed);
+  }
+
+  public void setOutakeSpeed() {
+    intakeMotor.set(-1);
+  }
 
   public void setSpeed(double speed)
   {

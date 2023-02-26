@@ -47,7 +47,7 @@ public class Arm extends SubsystemBase {
     //armMotor.getEncoder().setPosition(0);
 
 
-    kP = 2.5; 
+    kP = 3; 
     kI = 0;
     kD = 0; 
     kIz = 0; 
@@ -75,11 +75,12 @@ public class Arm extends SubsystemBase {
 
     SmartDashboard.putNumber("Arm", getAbsoluteEncoderPosition());
     
-    if (RobotContainer.operator.getRawAxis(1) > deadBand) {
+    /*  if (RobotContainer.operator.getRawAxis(1) > deadBand) {
       armMotor.set(-RobotContainer.operator.getRawAxis(1) * maxSpeed);
     } else if (RobotContainer.operator.getRawAxis(1) < -deadBand) {
       armMotor.set(-RobotContainer.operator.getRawAxis(1) * maxSpeed);
-    } 
+    }  */
+   
     /* else {
       armMotor.stopMotor();
     } */
