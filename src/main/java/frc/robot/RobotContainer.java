@@ -69,7 +69,7 @@ public class RobotContainer {
         new PIDConstants(Constants.AutoConstants.kPYController, 0.0, 0.0), // PID constants to correct for rotation error (used to create the rotation controller)
         s_Swerve::setModuleStates, // Module states consumer used to output to the drive subsystem
         eventMap,
-        true, // Should the path be automatically mirrored depending on alliance color. Optional, defaults to true
+        false, // Should the path be automatically mirrored depending on alliance color. Optional, defaults to true
         s_Swerve // The drive subsystem. Used to properly set the requirements of path following commands
     );
 
