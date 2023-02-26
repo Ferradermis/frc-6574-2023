@@ -156,7 +156,7 @@ public final class Constants {
         public static final int intakeMotorCANID = 1;
 
         /* Elevator Position constants */
-        //Gatorvator
+        //Gatorvator 🐊
 
         public static final double ELEVATOR_HOME_POSITION = 0;
         public static final double ELEVATOR_LOW_POSITION = 0;
