@@ -77,7 +77,9 @@ public class RobotContainer {
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
-        eventMap.put(new String("Hola"), new InstantCommand());
+        eventMap.put("IntakeConeFromFloor", new IntakeConeFromFloor());
+        eventMap.put("IntakeCubeFromFloor", new IntakeCubeFromFloor());
+        eventMap.put("ReturnWAEHome", new ReturnWAEHome());
 
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
