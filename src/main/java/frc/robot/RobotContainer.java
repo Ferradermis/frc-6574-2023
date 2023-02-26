@@ -142,7 +142,7 @@ public class RobotContainer {
      */
     public Command getAutonomousCommand() {
 
-        ArrayList<PathPlannerTrajectory> pathGroup = new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Vrrromm", new PathConstraints(4, 3)));
+        ArrayList<PathPlannerTrajectory> pathGroup = new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Event Test", new PathConstraints(4, 3)));
         return autoBuilder.fullAuto(pathGroup);
 
         //return new exampleAuto(s_Swerve);
