@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.RobotContainer;
 import frc.robot.commands.ArmCommands.SetArmPosition;
 import frc.robot.commands.ElevatorCommands.SetElevatorPosition;
@@ -22,6 +23,7 @@ public class ReturnWAEHome extends SequentialCommandGroup {
     addCommands(
       new SetElevatorPosition(0),
       new SetArmPosition(0),
+      new WaitCommand(.5),
       new SetWristPosition(0),
       new InstantCommand(() -> RobotContainer.arm.stop()),
       new InstantCommand(() -> RobotContainer.elevator.stopMotors())

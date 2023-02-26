@@ -14,7 +14,6 @@ import com.revrobotics.SparkMaxPIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.RobotContainer;
 
 public class Wrist extends SubsystemBase {
 
@@ -49,9 +48,9 @@ public class Wrist extends SubsystemBase {
     m_AbsoluteEncoder.setZeroOffset(0.6526145);
 
 
-    wristMotor.setSmartCurrentLimit(80);
+    wristMotor.setSmartCurrentLimit(45);
     intakeMotor.setSmartCurrentLimit(25);
-
+  
     kP = 2.5;
     kI = 0;
     kD = 0; 
