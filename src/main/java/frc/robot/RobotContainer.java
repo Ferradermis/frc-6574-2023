@@ -5,13 +5,16 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-
-import frc.robot.autos.*;
-import frc.robot.commands.*;
+import frc.robot.autos.exampleAuto;
+import frc.robot.commands.TeleopSwerve;
 import frc.robot.commands.ElevatorCommands.SetElevatorPosition;
 import frc.robot.commands.WristCommands.SetWristPosition;
-import frc.robot.subsystems.*;
+import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.Swerve;
+import frc.robot.subsystems.Wrist;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -21,6 +24,8 @@ import frc.robot.subsystems.*;
  */
 public class RobotContainer {
     /* Controllers */
+    public static CommandXboxController driverController = new CommandXboxController(0);
+    public static CommandXboxController operatorController = new CommandXboxController(1);
     public static Joystick driver = new Joystick(0);
     public static Joystick operator = new Joystick(1);
 
@@ -30,11 +35,12 @@ public class RobotContainer {
     private final int rotationAxis = XboxController.Axis.kRightX.value;
 
     /* Driver Buttons */
-    private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
+    //private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
     private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
-    private final JoystickButton elevatorPositionTest = new JoystickButton(operator, XboxController.Button.kLeftBumper.value);
+    //private final JoystickButton elevatorPositionTest = new JoystickButton(operator, XboxController.Button.kLeftBumper.value);
     //private final JoystickButton armPositionTest = new JoystickButton(operator, XboxController.Button.kRightBumper.value);
-    private final JoystickButton wristPositionTest = new JoystickButton(operator, XboxController.Button.kRightBumper.value);
+    //private final JoystickButton wristPositionTest = new JoystickButton(operator, XboxController.Button.kRightBumper.value); */
+    
 
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
@@ -46,13 +52,15 @@ public class RobotContainer {
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
+
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
                 s_Swerve, 
-                () -> -driver.getRawAxis(translationAxis), 
-                () -> -driver.getRawAxis(strafeAxis), 
-                () -> -driver.getRawAxis(rotationAxis), 
-                () -> robotCentric.getAsBoolean()
+                () -> -driverController.getRawAxis(translationAxis), 
+                () -> -driverController.getRawAxis(strafeAxis), 
+                () -> -driverController.getRawAxis(rotationAxis), 
+                () -> robotCentric.getAsBoolean(),
+                Constants.Swerve.swerveSpeedModifier
             )
         );
 
@@ -68,13 +76,28 @@ public class RobotContainer {
      */
     private void configureButtonBindings() {
         /* Driver Buttons */
-        zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
+        //zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
+        
+        driverController.leftTrigger().whileTrue(new TeleopSwerve(
+            s_Swerve, 
+            () -> -driverController.getRawAxis(translationAxis), 
+            () -> -driverController.getRawAxis(strafeAxis), 
+            () -> -driverController.getRawAxis(rotationAxis), 
+            () -> robotCentric.getAsBoolean(),
+            Constants.Swerve.turboSpeedModifier
+        ));
+
+        driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
+        driverController.x().onTrue(new InstantCommand(() -> s_Swerve.resetModulesToAbsolute()));
         
 
 
         /* Operator Buttons */
-        elevatorPositionTest.onTrue(new SetElevatorPosition(Constants.RobotConstants.ELEVATOR_MID_POSITION));
-        wristPositionTest.onTrue(new SetWristPosition(.35));
+        //elevatorPositionTest.onTrue(new SetElevatorPosition(Constants.RobotConstants.ELEVATOR_MID_POSITION));
+        //ewristPositionTest.onTrue(new SetWristPosition(.35));
+
+        operatorController.leftBumper().onTrue(new SetElevatorPosition(Constants.RobotConstants.ELEVATOR_MID_POSITION));
+        operatorController.rightBumper().onTrue(new SetWristPosition(.35));
     }
 
     /**

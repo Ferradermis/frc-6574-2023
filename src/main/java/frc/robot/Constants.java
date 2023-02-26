@@ -15,8 +15,9 @@ public final class Constants {
 
     public static final class Swerve {
         public static final int pigeonID = 13;
-        public static final boolean invertGyro = false; // Always ensure Gyro is CCW+ CW-
-
+        public static final boolean invertGyro = false;
+        public static final double swerveSpeedModifier = .6; // Always ensure Gyro is CCW+ CW-
+        public static final double turboSpeedModifier = 1;
         public static final COTSFalconSwerveConstants chosenModule =  //TODO: This must be tuned to specific robot
             COTSFalconSwerveConstants.SDSMK4i(COTSFalconSwerveConstants.driveGearRatios.SDSMK4i_L2);
 
@@ -90,7 +91,7 @@ public final class Constants {
 
         /* Module Specific Constants */
         /* Front Left Module - Module 0 */
-        public static final class Mod0 { //TODO: This must be tuned to specific robot
+        public static final class Mod0 { 
             public static final int driveMotorID = 9;
             public static final int angleMotorID = 7;
             public static final int canCoderID = 8;
@@ -100,7 +101,7 @@ public final class Constants {
         }
 
         /* Front Right Module - Module 1 */
-        public static final class Mod1 { //TODO: This must be tuned to specific robot
+        public static final class Mod1 { 
             public static final int driveMotorID = 3;
             public static final int angleMotorID = 1;
             public static final int canCoderID = 2;
@@ -110,7 +111,7 @@ public final class Constants {
         }
         
         /* Back Left Module - Module 2 */
-        public static final class Mod2 { //TODO: This must be tuned to specific robot
+        public static final class Mod2 { 
             public static final int driveMotorID = 6;
             public static final int angleMotorID = 4;
             public static final int canCoderID = 5;
@@ -120,7 +121,7 @@ public final class Constants {
         }
 
         /* Back Right Module - Module 3 */
-        public static final class Mod3 { //TODO: This must be tuned to specific robot
+        public static final class Mod3 { 
             public static final int driveMotorID = 12;
             public static final int angleMotorID = 10;
             public static final int canCoderID = 11;
