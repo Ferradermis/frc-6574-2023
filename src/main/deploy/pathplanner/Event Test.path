@@ -24,16 +24,16 @@
     },
     {
       "anchorPoint": {
-        "x": 5.295866030328552,
-        "y": 0.6438021647973122
+        "x": 5.3321390853308035,
+        "y": 0.6528704285478757
       },
       "prevControl": {
-        "x": 6.674242120414067,
-        "y": 0.6075291097950619
+        "x": 5.368412140333054,
+        "y": 0.6438021647973133
       },
       "nextControl": {
-        "x": 6.674242120414067,
-        "y": 0.6075291097950619
+        "x": 5.368412140333054,
+        "y": 0.6438021647973133
       },
       "holonomicAngle": 0,
       "isReversal": true,
@@ -41,7 +41,9 @@
       "isLocked": false,
       "isStopPoint": true,
       "stopEvent": {
-        "names": [],
+        "names": [
+          "IntakeCubeFromFloor"
+        ],
         "executionBehavior": "parallel",
         "waitBehavior": "none",
         "waitTime": 0
@@ -53,12 +55,12 @@
         "y": 0.6438021647973122
       },
       "prevControl": {
-        "x": 4.733633677793672,
-        "y": 0.698211747300687
+        "x": 5.622323525348804,
+        "y": 0.6438021647973122
       },
       "nextControl": {
-        "x": 6.456603790400561,
-        "y": 0.5893925822939374
+        "x": 5.4953678328409294,
+        "y": 0.6438021647973122
       },
       "holonomicAngle": 0,
       "isReversal": false,
@@ -66,7 +68,9 @@
       "isLocked": false,
       "isStopPoint": true,
       "stopEvent": {
-        "names": [],
+        "names": [
+          "ReturnWAEHome"
+        ],
         "executionBehavior": "parallel",
         "waitBehavior": "none",
         "waitTime": 0
