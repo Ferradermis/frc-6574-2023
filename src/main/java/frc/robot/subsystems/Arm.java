@@ -19,7 +19,7 @@ import frc.robot.RobotContainer;
 
 public class Arm extends SubsystemBase {
 
-  public static CANSparkMax armMotor;
+  public CANSparkMax armMotor;
   private final AbsoluteEncoder m_AbsoluteEncoder;
   //private final RelativeEncoder armEncoder;
   private SparkMaxPIDController armPIDController;
@@ -71,7 +71,7 @@ public class Arm extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Arm encoder", armMotor.getEncoder().getPosition());
+    //SmartDashboard.putNumber("Arm encoder", armMotor.getEncoder().getPosition());
 
     SmartDashboard.putNumber("Arm", getAbsoluteEncoderPosition());
     

@@ -18,9 +18,9 @@ import frc.robot.RobotContainer;
 
 public class Wrist extends SubsystemBase {
 
-  public static CANSparkMax wristMotor;
-  public static CANSparkMax intakeMotor;
-  public static AbsoluteEncoder m_AbsoluteEncoder;
+  public CANSparkMax wristMotor;
+  public CANSparkMax intakeMotor;
+  public AbsoluteEncoder m_AbsoluteEncoder;
   //private RelativeEncoder wristEncoder;
 
   private SparkMaxPIDController wristPIDController;
@@ -115,12 +115,11 @@ public class Wrist extends SubsystemBase {
   {
     wristMotor.stopMotor();
   }
-/*   public double getAbsoluteEncoderCounts()
-  {
+
+
+  public double getAbsoluteEncoderPosition() {
     return m_AbsoluteEncoder.getPosition();
-  } */
-
-
+  }
   public void setPosition(double position) {
     wristPIDController.setReference(position, CANSparkMax.ControlType.kPosition);
   }

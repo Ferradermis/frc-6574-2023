@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.autos.*;
 import frc.robot.commands.*;
+import frc.robot.commands.ElevatorCommands.SetElevatorPosition;
+import frc.robot.commands.WristCommands.SetWristPosition;
 import frc.robot.subsystems.*;
 
 /**
@@ -67,11 +69,12 @@ public class RobotContainer {
     private void configureButtonBindings() {
         /* Driver Buttons */
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
+        
 
 
         /* Operator Buttons */
-        elevatorPositionTest.onTrue(new InstantCommand(() -> elevator.setPosition(15)));
-        wristPositionTest.onTrue(new InstantCommand(() -> wrist.setPosition(.35)));
+        elevatorPositionTest.onTrue(new SetElevatorPosition(Constants.RobotConstants.ELEVATOR_MID_POSITION));
+        wristPositionTest.onTrue(new SetWristPosition(.35));
     }
 
     /**
