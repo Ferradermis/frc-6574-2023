@@ -56,7 +56,7 @@ public class RobotContainer {
 
 
     /* Subsystems */
-    private final Swerve s_Swerve = new Swerve();
+    public static Swerve s_Swerve = new Swerve();
     public static Elevator elevator = new Elevator();
     public static Wrist wrist = new Wrist();
     public static Arm arm = new Arm();
@@ -93,7 +93,7 @@ public class RobotContainer {
                 () -> -driverController.getRawAxis(translationAxis),
                 () -> -driverController.getRawAxis(strafeAxis),
                 () -> -driverController.getRawAxis(rotationAxis),
-                () -> false
+                () -> true
             )
         );
 
@@ -116,7 +116,7 @@ public class RobotContainer {
             () -> -driverController.getRawAxis(translationAxis),
             () -> -driverController.getRawAxis(strafeAxis),
             () -> -driverController.getRawAxis(rotationAxis),
-            () -> true
+            () -> false
         ));
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
         driverController.x().onTrue(new InstantCommand(() -> s_Swerve.resetModulesToAbsolute()));
