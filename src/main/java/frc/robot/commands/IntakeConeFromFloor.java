@@ -6,7 +6,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants.RobotConstants;
 import frc.robot.commands.ArmCommands.SetArmPosition;
 import frc.robot.commands.ElevatorCommands.SetElevatorPosition;

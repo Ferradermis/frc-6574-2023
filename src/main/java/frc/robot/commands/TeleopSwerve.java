@@ -6,7 +6,6 @@ import java.util.function.DoubleSupplier;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.Swerve;
@@ -18,14 +17,13 @@ public class TeleopSwerve extends CommandBase {
     private DoubleSupplier strafeSup;
     private DoubleSupplier rotationSup;
     private BooleanSupplier robotCentricSup;
-    private double speedModifier;
 
     public TeleopSwerve(Swerve s_Swerve,
                         DoubleSupplier translationSup,
                         DoubleSupplier strafeSup,
                         DoubleSupplier rotationSup,
-                        BooleanSupplier robotCentricSup,
-                        double speedModifier) {
+                        BooleanSupplier robotCentricSup
+                        ) {
 
         this.s_Swerve = s_Swerve;
         addRequirements(s_Swerve);

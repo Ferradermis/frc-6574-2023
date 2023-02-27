@@ -25,8 +25,8 @@ public class Wrist extends SubsystemBase {
   private SparkMaxPIDController wristPIDController;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
 
-  private double maxSpeed = 0.25;
-  private double deadBand = 0.1;
+  //private double maxSpeed = 0.25;
+  //private double deadBand = 0.1;
 
   /** Creates a new Intake. */
   public Wrist() {

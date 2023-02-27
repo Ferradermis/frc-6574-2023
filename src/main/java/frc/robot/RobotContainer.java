@@ -88,8 +88,8 @@ public class RobotContainer {
                 () -> -driverController.getRawAxis(translationAxis),
                 () -> -driverController.getRawAxis(strafeAxis),
                 () -> -driverController.getRawAxis(rotationAxis),
-                () -> robotCentric.getAsBoolean(),
-                Constants.Swerve.swerveSpeedModifier
+                () -> robotCentric.getAsBoolean()
+
             )
         );
 
@@ -112,8 +112,8 @@ public class RobotContainer {
             () -> -driverController.getRawAxis(translationAxis),
             () -> -driverController.getRawAxis(strafeAxis),
             () -> -driverController.getRawAxis(rotationAxis),
-            () -> robotCentric.getAsBoolean(),
-            Constants.Swerve.turboSpeedModifier
+            () -> robotCentric.getAsBoolean()
+            
         ));
 
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));

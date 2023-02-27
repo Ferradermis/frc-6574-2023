@@ -23,8 +23,8 @@ public class Arm extends SubsystemBase {
   //private final RelativeEncoder armEncoder;
   private SparkMaxPIDController armPIDController;
 
-  private double maxSpeed = 0.25;
-  private double deadBand = 0.1;
+  //private double maxSpeed = 0.25;
+  //private double deadBand = 0.1;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
 
   /** Creates a new Intake. */

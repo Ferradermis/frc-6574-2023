@@ -18,12 +18,12 @@ public final class Constants {
         public static final boolean invertGyro = false;
         public static final double swerveSpeedModifier = .6; // Always ensure Gyro is CCW+ CW-
         public static final double turboSpeedModifier = 1;
-        public static final COTSFalconSwerveConstants chosenModule =  //TODO: This must be tuned to specific robot
+        public static final COTSFalconSwerveConstants chosenModule =  
             COTSFalconSwerveConstants.SDSMK4i(COTSFalconSwerveConstants.driveGearRatios.SDSMK4i_L2);
 
         /* Drivetrain Constants */
-        public static final double trackWidth = Units.inchesToMeters(18.75); //TODO: This must be tuned to specific robot
-        public static final double wheelBase = Units.inchesToMeters(20.75); //TODO: This must be tuned to specific robot
+        public static final double trackWidth = Units.inchesToMeters(18.75); 
+        public static final double wheelBase = Units.inchesToMeters(20.75); 
         public static final double wheelCircumference = chosenModule.wheelCircumference;
 
         /* Swerve Kinematics 
@@ -75,13 +75,13 @@ public final class Constants {
 
         /* Drive Motor Characterization Values 
          * Divide SYSID values by 12 to convert from volts to percent output for CTRE */
-        public static final double driveKS = (0.12776 / 12); //TODO: This must be tuned to specific robot
+        public static final double driveKS = (0.12776 / 12); 
         public static final double driveKV = (2.3231 / 12);
         public static final double driveKA = (0.31662 / 12);
 
         /* Swerve Profiling Values */
         /** Meters per Second */
-        public static final double maxSpeed = 4.5; //TODO: This must be tuned to specific robot
+        public static final double maxSpeed = 4.5; 
         /** Radians per Second */
         public static final double maxAngularVelocity = 10.0; //TODO: This must be tuned to specific robot
 
@@ -131,7 +131,7 @@ public final class Constants {
         }
     }
 
-    public static final class AutoConstants { //TODO: The below constants are used in the example auto, and must be tuned to specific robot
+    public static final class AutoConstants { 
 
         public static final double kMaxSpeedMetersPerSecond = 3;
         public static final double kMaxAccelerationMetersPerSecondSquared = 3;
