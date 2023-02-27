@@ -25,8 +25,6 @@ public class SwerveModule {
 
     SimpleMotorFeedforward feedforward = new SimpleMotorFeedforward(Constants.Swerve.driveKS, Constants.Swerve.driveKV, Constants.Swerve.driveKA);
 
-
-
     public double makePositiveDegrees(double anAngle ){
         double degrees = anAngle;
         degrees = degrees % 360;

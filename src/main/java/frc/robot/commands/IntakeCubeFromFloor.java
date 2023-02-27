@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.RobotConstants;
 import frc.robot.commands.ElevatorCommands.SetElevatorPosition;
 import frc.robot.commands.WristCommands.SetWristPosition;
+import frc.robot.commands.WristCommands.setWristIntakeSpeed;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -21,9 +22,9 @@ public class IntakeCubeFromFloor extends SequentialCommandGroup {
     addCommands(
     new ParallelCommandGroup(
       new SetElevatorPosition(RobotConstants.ELEVATOR_INTAKECUBE_POSITION),
-      new SetWristPosition(RobotConstants.WRIST_CUBE_FLOOR_INTAKE_POSITION))
+      new SetWristPosition(RobotConstants.WRIST_CUBE_FLOOR_INTAKE_POSITION)),
+      new setWristIntakeSpeed(1)
       //new SetArmPosition(RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION)
-
     );
   }
 }

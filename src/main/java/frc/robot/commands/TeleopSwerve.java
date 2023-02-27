@@ -42,15 +42,20 @@ public class TeleopSwerve extends CommandBase {
         double rotationVal = MathUtil.applyDeadband(rotationSup.getAsDouble(), Constants.stickDeadband);
 
         double speedLimit = Constants.Swerve.maxSpeed;
+        double angularVelocityLimit = Constants.Swerve.maxAngularVelocity;
         // check if any other tippy commands are scheduled, override with a lower value
         if (RobotContainer.elevator.leftMotor.getEncoder().getPosition() >= 5) {
             speedLimit *= 0.3;
+            angularVelocityLimit *= 0.3;
         }
+        //else if (RobotContainer.driver.getTrigger() == true) {
+        //    speedLimit *= 1.5;
+        //}
 
         /* Drive */
         s_Swerve.drive(
             new Translation2d(translationVal, strafeVal).times(speedLimit),
-            rotationVal * Constants.Swerve.maxAngularVelocity,
+            rotationVal * angularVelocityLimit,
             !robotCentricSup.getAsBoolean(),
             true
         );
