@@ -9,6 +9,7 @@ import frc.robot.RobotContainer;
 
 public class SetElevatorPosition extends CommandBase {
   private double position;
+  
   /** Creates a new SetElevatorPosition. */
   public SetElevatorPosition(double position) {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -38,11 +39,9 @@ public class SetElevatorPosition extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (RobotContainer.elevator.leftMotor.getEncoder().getPosition() >= (position - 1)) { //TODO CHANGE TO TOLERANCE BASED ON SUPPLIED POSITION FROM ROBOT CONTAINER
-      System.out.println("SetElevatorPosition Complete");
+    if (Math.abs(RobotContainer.elevator.leftMotor.getEncoder().getPosition() - position) <= 1) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }

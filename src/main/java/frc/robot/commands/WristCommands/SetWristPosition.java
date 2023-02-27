@@ -10,7 +10,7 @@ import frc.robot.RobotContainer;
 public class SetWristPosition extends CommandBase {
   /** Creates a new SetWristPosition. */
   private double position;
-  private double tolerance = 0.010;
+  private double tolerance = 0.020;
   public SetWristPosition(double position) {
     this.position = position;
     // Use addRequirements() here to declare subsystem dependencies.
@@ -40,7 +40,7 @@ public class SetWristPosition extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (RobotContainer.wrist.getAbsoluteEncoderPosition() >= (position - tolerance)) { //TODO CHANGE TO TOLERANCE BASED ON SUPPLIED POSITION FROM ROBOT CONTAINER
+    if (Math.abs(RobotContainer.wrist.getAbsoluteEncoderPosition() - position) <= tolerance) {
       System.out.println("SetWristPosition Complete");
       return true;
     }

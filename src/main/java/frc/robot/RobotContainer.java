@@ -16,10 +16,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.autos.exampleAuto;
 import frc.robot.commands.IntakeConeFromFloor;
 import frc.robot.commands.IntakeCubeFromFloor;
 import frc.robot.commands.ReturnWAEHome;
+import frc.robot.commands.ScoreConeCubeHigh;
+import frc.robot.commands.ScoreConeCubeMid;
 import frc.robot.commands.TeleopSwerve;
 import frc.robot.commands.WristCommands.setWristIntakeSpeed;
 import frc.robot.subsystems.Arm;
@@ -117,6 +118,8 @@ public class RobotContainer {
 
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
         driverController.x().onTrue(new InstantCommand(() -> s_Swerve.resetModulesToAbsolute()));
+        driverController.a().onTrue(new ScoreConeCubeMid());
+        driverController.b().onTrue(new ScoreConeCubeHigh());
 
 
 
@@ -124,7 +127,7 @@ public class RobotContainer {
         //elevatorPositionTest.onTrue(new SetElevatorPosition(Constants.RobotConstants.ELEVATOR_MID_POSITION));
         //ewristPositionTest.onTrue(new SetWristPosition(.35));
 
-        //operatorController.leftBumper().onTrue(new SetElevatorPosition(Constants.RobotConstants.ELEVATOR_INTAKECUBE_POSITION));
+        //operatorControlle.leftBumper().onTrue(new SetElevatorPosition(Constants.RobotConstants.ELEVATOR_INTAKECUBE_POSITION));
         //operatorController.rightBumper().onTrue(new SetWristPosition(Constants.RobotConstants.WRIST_CUBE_FLOOR_INTAKE_POSITION));
         //operatorController.x().onTrue(new SetArmPosition(Constants.RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION));
         operatorController.a().onTrue(new IntakeCubeFromFloor());
@@ -142,7 +145,7 @@ public class RobotContainer {
      */
     public Command getAutonomousCommand() {
 
-        ArrayList<PathPlannerTrajectory> pathGroup = new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Event Test", new PathConstraints(2.5, 2)));
+        ArrayList<PathPlannerTrajectory> pathGroup = new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Event Test", new PathConstraints(1, 2)));
         return autoBuilder.fullAuto(pathGroup);
 
         //return new exampleAuto(s_Swerve);

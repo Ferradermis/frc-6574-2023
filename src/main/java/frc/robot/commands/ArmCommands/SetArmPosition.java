@@ -40,7 +40,7 @@ public class SetArmPosition extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (RobotContainer.arm.getAbsoluteEncoderPosition() >= (position - tolerance)) { //TODO CHANGE TO TOLERANCE BASED ON SUPPLIED POSITION FROM ROBOT CONTAINER
+    if (Math.abs(RobotContainer.arm.getAbsoluteEncoderPosition() - position) <= tolerance) {
       System.out.println("SetArmPosition Complete");
       return true;
     }
