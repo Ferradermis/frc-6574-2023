@@ -18,15 +18,15 @@ public final class Constants {
         public static final boolean invertGyro = false;
         public static final double swerveSpeedModifier = .6; // Always ensure Gyro is CCW+ CW-
         public static final double turboSpeedModifier = 1;
-        public static final COTSFalconSwerveConstants chosenModule =  
+        public static final COTSFalconSwerveConstants chosenModule =
             COTSFalconSwerveConstants.SDSMK4i(COTSFalconSwerveConstants.driveGearRatios.SDSMK4i_L2);
 
         /* Drivetrain Constants */
-        public static final double trackWidth = Units.inchesToMeters(18.75); 
-        public static final double wheelBase = Units.inchesToMeters(20.75); 
+        public static final double trackWidth = Units.inchesToMeters(18.75);
+        public static final double wheelBase = Units.inchesToMeters(20.75);
         public static final double wheelCircumference = chosenModule.wheelCircumference;
 
-        /* Swerve Kinematics 
+        /* Swerve Kinematics
          * No need to ever change this unless you are not doing a traditional rectangular/square 4 module swerve */
          public static final SwerveDriveKinematics swerveKinematics = new SwerveDriveKinematics(
             new Translation2d(wheelBase / 2.0, trackWidth / 2.0),
@@ -73,15 +73,15 @@ public final class Constants {
         public static final double driveKD = 0.0;
         public static final double driveKF = 0.0;
 
-        /* Drive Motor Characterization Values 
+        /* Drive Motor Characterization Values
          * Divide SYSID values by 12 to convert from volts to percent output for CTRE */
-        public static final double driveKS = (0.12776 / 12); 
+        public static final double driveKS = (0.12776 / 12);
         public static final double driveKV = (2.3231 / 12);
         public static final double driveKA = (0.31662 / 12);
 
         /* Swerve Profiling Values */
         /** Meters per Second */
-        public static final double maxSpeed = 4.5; 
+        public static final double maxSpeed = 4.5;
         /** Radians per Second */
         public static final double maxAngularVelocity = 10.0; //TODO: This must be tuned to specific robot
 
@@ -91,64 +91,64 @@ public final class Constants {
 
         /* Module Specific Constants */
         /* Front Left Module - Module 0 */
-        public static final class Mod0 { 
+        public static final class Mod0 {
             public static final int driveMotorID = 9;
             public static final int angleMotorID = 7;
             public static final int canCoderID = 8;
             public static final Rotation2d angleOffset = Rotation2d.fromDegrees(338.64);
-            public static final SwerveModuleConstants constants = 
+            public static final SwerveModuleConstants constants =
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
 
         /* Front Right Module - Module 1 */
-        public static final class Mod1 { 
+        public static final class Mod1 {
             public static final int driveMotorID = 3;
             public static final int angleMotorID = 1;
             public static final int canCoderID = 2;
             public static final Rotation2d angleOffset = Rotation2d.fromDegrees(111.88);
-            public static final SwerveModuleConstants constants = 
+            public static final SwerveModuleConstants constants =
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
-        
+
         /* Back Left Module - Module 2 */
-        public static final class Mod2 { 
+        public static final class Mod2 {
             public static final int driveMotorID = 6;
             public static final int angleMotorID = 4;
             public static final int canCoderID = 5;
             public static final Rotation2d angleOffset = Rotation2d.fromDegrees(230.27);
-            public static final SwerveModuleConstants constants = 
+            public static final SwerveModuleConstants constants =
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
 
         /* Back Right Module - Module 3 */
-        public static final class Mod3 { 
+        public static final class Mod3 {
             public static final int driveMotorID = 12;
             public static final int angleMotorID = 10;
             public static final int canCoderID = 11;
             public static final Rotation2d angleOffset = Rotation2d.fromDegrees(116.54);
-            public static final SwerveModuleConstants constants = 
+            public static final SwerveModuleConstants constants =
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
     }
 
-    public static final class AutoConstants { 
+    public static final class AutoConstants {
 
         public static final double kMaxSpeedMetersPerSecond = 3;
         public static final double kMaxAccelerationMetersPerSecondSquared = 3;
         public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
         public static final double kMaxAngularSpeedRadiansPerSecondSquared = Math.PI;
-    
+
         public static final double kPXController = 1;
         public static final double kPYController = 1;
         public static final double kPThetaController = 1;
-    
+
         /* Constraint for the motion profilied robot angle controller */
         public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
             new TrapezoidProfile.Constraints(
                 kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
     }
     public static final class RobotConstants {
-        
+
         public static final int elevatorLeftMotorCANID = 19;
         public static final int elevatorRightMotorCANID = 11;
         public static final int wristMotorCANID = 3;
@@ -164,7 +164,7 @@ public final class Constants {
         public static final double ELEVATOR_MID_POSITION = 20.00;
         public static final double ELEVATOR_HIGH_POSITION = 32;
 
-        /* Wrist position constants */ 
+        /* Wrist position constants */
         public static final double WRIST_HOME_POSITION = .042;
         public static final double WRIST_CONE_FLOOR_INTAKE_POSITION = .18;
         public static final double WRIST_CONE_LOWSCORE_POSITION = 0;
@@ -176,7 +176,7 @@ public final class Constants {
         public static final double WRIST_CUBE_MIDSCORE_POSITION = 0;
         public static final double WRIST_CUBE_HIGHSCORE_POSITION = 0;
 
-        /* Arm position constants */ 
+        /* Arm position constants */
         public static final double ARM_HOME_POSITION = 0;
         public static final double ARM_CONE_FLOOR_INTAKE_POSITION = 0;
         public static final double ARM_CONE_LOWSCORE_POSITION = 0;

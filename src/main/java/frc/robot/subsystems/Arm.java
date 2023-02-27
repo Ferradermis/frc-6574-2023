@@ -29,7 +29,7 @@ public class Arm extends SubsystemBase {
 
   /** Creates a new Intake. */
   public Arm() {
-    
+
     armMotor = new CANSparkMax(Constants.RobotConstants.armMotorCANID, MotorType.kBrushless);
     armMotor.restoreFactoryDefaults();
 
@@ -41,17 +41,17 @@ public class Arm extends SubsystemBase {
     armMotor.setInverted(true);
     armMotor.setSmartCurrentLimit(25);
     m_AbsoluteEncoder.setZeroOffset(0.2721140);
-    
+
 
     //armMotor.getEncoder().setPosition(0);
 
 
-    kP = 3; 
+    kP = 3;
     kI = 0;
-    kD = 0; 
-    kIz = 0; 
-    kFF = 0; 
-    kMaxOutput = .5; 
+    kD = 0;
+    kIz = 0;
+    kFF = 0;
+    kMaxOutput = .5;
     kMinOutput = -.5;
 
     armPIDController.setP(kP);
@@ -64,7 +64,7 @@ public class Arm extends SubsystemBase {
     armPIDController.setPositionPIDWrappingEnabled(true);
     armPIDController.setPositionPIDWrappingMinInput(0);
     armPIDController.setPositionPIDWrappingMaxInput(1);
-    
+
   }
 
   @Override
@@ -73,17 +73,17 @@ public class Arm extends SubsystemBase {
     //SmartDashboard.putNumber("Arm encoder", armMotor.getEncoder().getPosition());
 
     SmartDashboard.putNumber("Arm", getAbsoluteEncoderPosition());
-    
+
     /*  if (RobotContainer.operator.getRawAxis(1) > deadBand) {
       armMotor.set(-RobotContainer.operator.getRawAxis(1) * maxSpeed);
     } else if (RobotContainer.operator.getRawAxis(1) < -deadBand) {
       armMotor.set(-RobotContainer.operator.getRawAxis(1) * maxSpeed);
     }  */
-   
+
     /* else {
       armMotor.stopMotor();
     } */
-    
+
   }
 
   public void setSpeed(double speed) {

@@ -50,15 +50,15 @@ public class Wrist extends SubsystemBase {
 
     wristMotor.setSmartCurrentLimit(45);
     intakeMotor.setSmartCurrentLimit(25);
-  
+
     kP = 2.5;
     kI = 0;
-    kD = 0; 
-    kIz = 0; 
-    kFF = 0; 
-    kMaxOutput = .5; 
+    kD = 0;
+    kIz = 0;
+    kFF = 0;
+    kMaxOutput = .5;
     kMinOutput = -.5;
-    
+
     wristPIDController.setP(kP);
     wristPIDController.setI(kI);
     wristPIDController.setD(kD);
@@ -85,7 +85,7 @@ public class Wrist extends SubsystemBase {
     } */
 
 
-    
+
     /* if (RobotContainer.operator.getRawButtonPressed(1)) {
       intakeMotor.set(1);
     }
@@ -102,8 +102,8 @@ public class Wrist extends SubsystemBase {
 
 
     }
-    
-  
+
+
   public void setIntakeSpeed(double speed) {
     intakeMotor.set(speed);
   }
@@ -129,5 +129,5 @@ public class Wrist extends SubsystemBase {
   public void setPosition(double position) {
     wristPIDController.setReference(position, CANSparkMax.ControlType.kPosition);
   }
-  
+
 }

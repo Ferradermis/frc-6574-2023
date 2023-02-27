@@ -23,7 +23,7 @@ public class IntakeCubeFromFloor extends SequentialCommandGroup {
       new SetElevatorPosition(RobotConstants.ELEVATOR_INTAKECUBE_POSITION),
       new SetWristPosition(RobotConstants.WRIST_CUBE_FLOOR_INTAKE_POSITION))
       //new SetArmPosition(RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION)
-    
+
     );
   }
 }

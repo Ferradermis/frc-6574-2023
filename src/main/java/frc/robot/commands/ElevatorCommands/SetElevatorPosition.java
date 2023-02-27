@@ -9,7 +9,7 @@ import frc.robot.RobotContainer;
 
 public class SetElevatorPosition extends CommandBase {
   private double position;
-  
+
   /** Creates a new SetElevatorPosition. */
   public SetElevatorPosition(double position) {
     // Use addRequirements() here to declare subsystem dependencies.

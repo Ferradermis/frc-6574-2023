@@ -54,12 +54,12 @@ public class Elevator extends SubsystemBase {
     elevatorPIDController = leftMotor.getPIDController();
     leftMotor.getEncoder();
 
-    kP = 0.15; 
+    kP = 0.15;
     kI = 0;
-    kD = 0; 
-    kIz = 0; 
-    kFF = 0; 
-    kMaxOutput = .5; 
+    kD = 0;
+    kIz = 0;
+    kFF = 0;
+    kMaxOutput = .5;
     kMinOutput = -.5;
 
     elevatorPIDController.setP(kP);
