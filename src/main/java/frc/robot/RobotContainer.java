@@ -12,10 +12,11 @@ import com.pathplanner.lib.auto.SwerveAutoBuilder;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.IntakeConeFromFloor;
 import frc.robot.commands.IntakeCubeFromFloor;
 import frc.robot.commands.ReturnWAEHome;
@@ -48,7 +49,7 @@ public class RobotContainer {
 
     /* Driver Buttons */
     //private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
-    private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
+    //private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
     //private final JoystickButton elevatorPositionTest = new JoystickButton(operator, XboxController.Button.kLeftBumper.value);
     //private final JoystickButton armPositionTest = new JoystickButton(operator, XboxController.Button.kRightBumper.value);
     //private final JoystickButton wristPositionTest = new JoystickButton(operator, XboxController.Button.kRightBumper.value); */
@@ -73,6 +74,7 @@ public class RobotContainer {
         false, // Should the path be automatically mirrored depending on alliance color. Optional, defaults to true
         s_Swerve // The drive subsystem. Used to properly set the requirements of path following commands
     );
+    SendableChooser<CommandBase> autoChooser = new SendableChooser<>();
 
 
 
@@ -81,6 +83,9 @@ public class RobotContainer {
         eventMap.put("IntakeConeFromFloor", new IntakeConeFromFloor());
         eventMap.put("IntakeCubeFromFloor", new IntakeCubeFromFloor());
         eventMap.put("ReturnWAEHome", new ReturnWAEHome());
+        eventMap.put("ScoreConeCubeHigh", new ScoreConeCubeHigh());
+        eventMap.put("ScoreConeCubeMid", new ScoreConeCubeMid());
+
 
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
@@ -88,8 +93,7 @@ public class RobotContainer {
                 () -> -driverController.getRawAxis(translationAxis),
                 () -> -driverController.getRawAxis(strafeAxis),
                 () -> -driverController.getRawAxis(rotationAxis),
-                () -> robotCentric.getAsBoolean()
-
+                () -> false
             )
         );
 
@@ -112,29 +116,20 @@ public class RobotContainer {
             () -> -driverController.getRawAxis(translationAxis),
             () -> -driverController.getRawAxis(strafeAxis),
             () -> -driverController.getRawAxis(rotationAxis),
-            () -> robotCentric.getAsBoolean()
-
+            () -> true
         ));
-
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
         driverController.x().onTrue(new InstantCommand(() -> s_Swerve.resetModulesToAbsolute()));
-        driverController.a().onTrue(new ScoreConeCubeMid());
-        driverController.b().onTrue(new ScoreConeCubeHigh());
-
-
+        driverController.rightBumper().onTrue(new IntakeCubeFromFloor());
+        driverController.leftBumper().onTrue(new IntakeConeFromFloor());
+        driverController.b().onTrue(new ReturnWAEHome());
 
         /* Operator Buttons */
-        //elevatorPositionTest.onTrue(new SetElevatorPosition(Constants.RobotConstants.ELEVATOR_MID_POSITION));
-        //ewristPositionTest.onTrue(new SetWristPosition(.35));
-
-        //operatorControlle.leftBumper().onTrue(new SetElevatorPosition(Constants.RobotConstants.ELEVATOR_INTAKECUBE_POSITION));
-        //operatorController.rightBumper().onTrue(new SetWristPosition(Constants.RobotConstants.WRIST_CUBE_FLOOR_INTAKE_POSITION));
-        //operatorController.x().onTrue(new SetArmPosition(Constants.RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION));
-        operatorController.a().onTrue(new IntakeCubeFromFloor());
-        operatorController.leftBumper().onTrue(new IntakeConeFromFloor());
         operatorController.b().onTrue(new ReturnWAEHome());
-        operatorController.x().whileTrue(new setWristIntakeSpeed(1));
-        operatorController.y().whileTrue(new setWristIntakeSpeed(-1));
+        operatorController.rightBumper().whileTrue(new setWristIntakeSpeed(1));
+        operatorController.leftBumper().whileTrue(new setWristIntakeSpeed(-1));
+        operatorController.a().onTrue(new ScoreConeCubeMid());
+        operatorController.b().onTrue(new ScoreConeCubeHigh());
 
     }
 
