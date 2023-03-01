@@ -1,5 +1,6 @@
 package frc.robot;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,6 +14,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -81,12 +83,24 @@ public class RobotContainer {
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
+
+        // Map all of the events referenced by PathPlanner to their respective commands
         eventMap.put("IntakeConeFromFloor", new IntakeConeFromFloor());
         eventMap.put("IntakeCubeFromFloor", new IntakeCubeFromFloor());
         eventMap.put("ReturnWAEHome", new ReturnWAEHome());
         eventMap.put("ScoreConeCubeHigh", new ScoreConeCubeHigh());
         eventMap.put("ScoreConeCubeMid", new ScoreConeCubeMid());
 
+        double autoVelocityConstraint = 1.0;
+        double autoAccelerationConstraint = 2.0;
+
+        // Build out sendable chooser commands for each of the generated PathPlanner routines
+        File[] fileList = Filesystem.getDeployDirectory().toPath().resolve("output/").toFile().listFiles();
+        for (File file : fileList) {
+            if (file.getName().endsWith(".path")) {
+                autoChooser.addOption(file.getName().replace(".path", ""), autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup(file.getName().replace(".path", ""), new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
+            }
+        }
 
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
@@ -143,8 +157,7 @@ public class RobotContainer {
      */
     public Command getAutonomousCommand() {
 
-        ArrayList<PathPlannerTrajectory> pathGroup = new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Event Test", new PathConstraints(1, 2)));
-        return autoBuilder.fullAuto(pathGroup);
+        return autoChooser.getSelected();
 
         //return new exampleAuto(s_Swerve);
     }
