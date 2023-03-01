@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
@@ -13,7 +14,7 @@ public class AutoLevelOnChargingStation extends CommandBase {
   private double error;
   private double currentAngle;
   private double drivePower;
-  private double kP = 0.015;
+  private double kP = 0.01;
 
   public AutoLevelOnChargingStation() {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -32,7 +33,7 @@ public class AutoLevelOnChargingStation extends CommandBase {
     this.currentAngle = RobotContainer.s_Swerve.getPitch();
 
     error = 0 - currentAngle;
-    drivePower = -Math.min(kP * error, 1);
+    drivePower = Math.min(kP * error, 1);
 
     //Limit max zoom
     if (Math.abs(drivePower) > 0.4) {
@@ -63,6 +64,14 @@ public class AutoLevelOnChargingStation extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Math.abs(error) < 1;
+    if (Math.abs(error) < 1) {
+      return true;
+    }
+    else if (RobotContainer.driver.getRawAxis(XboxController.Axis.kLeftY.value) > 0.1) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 }

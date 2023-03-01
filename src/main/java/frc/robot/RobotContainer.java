@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.commands.AutoLevelOnChargingStation;
 import frc.robot.commands.IntakeConeFromFloor;
 import frc.robot.commands.IntakeCubeFromFloor;
 import frc.robot.commands.ReturnWAEHome;
@@ -93,7 +94,7 @@ public class RobotContainer {
                 () -> -driverController.getRawAxis(translationAxis),
                 () -> -driverController.getRawAxis(strafeAxis),
                 () -> -driverController.getRawAxis(rotationAxis),
-                () -> true
+                () -> false
             )
         );
 
@@ -107,29 +108,31 @@ public class RobotContainer {
      * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
      * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
-    private void configureButtonBindings() {
+    private void configureButtonBindings() { //These are driver controls
         /* Driver Buttons */
         //zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
 
-        driverController.leftTrigger().whileTrue(new TeleopSwerve(
+        driverController.leftTrigger().whileTrue(new TeleopSwerve( //Drive robot centric
             s_Swerve,
             () -> -driverController.getRawAxis(translationAxis),
             () -> -driverController.getRawAxis(strafeAxis),
             () -> -driverController.getRawAxis(rotationAxis),
-            () -> false
+            () -> true
         ));
+
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
         driverController.x().onTrue(new InstantCommand(() -> s_Swerve.resetModulesToAbsolute()));
         driverController.rightBumper().onTrue(new IntakeCubeFromFloor());
         driverController.leftBumper().onTrue(new IntakeConeFromFloor());
         driverController.b().onTrue(new ReturnWAEHome());
+        driverController.start().onTrue(new AutoLevelOnChargingStation());
 
         /* Operator Buttons */
         operatorController.b().onTrue(new ReturnWAEHome());
         operatorController.rightBumper().whileTrue(new setWristIntakeSpeed(1));
         operatorController.leftBumper().whileTrue(new setWristIntakeSpeed(-1));
         operatorController.a().onTrue(new ScoreConeCubeMid());
-        operatorController.b().onTrue(new ScoreConeCubeHigh());
+        operatorController.x().onTrue(new ScoreConeCubeHigh());
 
     }
 

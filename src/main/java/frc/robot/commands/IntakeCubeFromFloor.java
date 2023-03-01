@@ -23,7 +23,7 @@ public class IntakeCubeFromFloor extends SequentialCommandGroup {
     new ParallelCommandGroup(
       new SetElevatorPosition(RobotConstants.ELEVATOR_INTAKECUBE_POSITION),
       new SetWristPosition(RobotConstants.WRIST_CUBE_FLOOR_INTAKE_POSITION)),
-      new setWristIntakeSpeed(1)
+      new setWristIntakeSpeed(-1)
       //new SetArmPosition(RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION)
     );
   }

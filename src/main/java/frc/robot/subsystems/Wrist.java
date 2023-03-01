@@ -47,7 +47,6 @@ public class Wrist extends SubsystemBase {
     intakeMotor.setIdleMode(IdleMode.kBrake);
     m_AbsoluteEncoder.setZeroOffset(0.6526145);
 
-
     wristMotor.setSmartCurrentLimit(45);
     intakeMotor.setSmartCurrentLimit(25);
 
