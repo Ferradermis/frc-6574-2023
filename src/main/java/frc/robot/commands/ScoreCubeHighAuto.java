@@ -4,33 +4,27 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import edu.wpi.first.wpilibj2.command.WaitCommand;
-import frc.robot.RobotContainer;
 import frc.robot.Constants.RobotConstants;
 import frc.robot.commands.ArmCommands.SetArmPosition;
 import frc.robot.commands.ElevatorCommands.SetElevatorPosition;
-import frc.robot.commands.WristCommands.SetWristIntakeSpeedInstant;
+import frc.robot.commands.WristCommands.SetWristIntakeSpeed;
 import frc.robot.commands.WristCommands.SetWristPosition;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class ReturnWAEHome extends SequentialCommandGroup {
-  /** Creates a new ReturnWAEHome. */
-  public ReturnWAEHome() {
+public class ScoreCubeHighAuto extends SequentialCommandGroup {
+  /** Creates a new ScoreCubeHighAuto. */
+  public ScoreCubeHighAuto() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(
-      new SetBlinkin(0.61),
-      new SetWristIntakeSpeedInstant(0),
-      new SetArmPosition(0),
-      new SetElevatorPosition(0),
-      new WaitCommand(.1),
-      new SetWristPosition(RobotConstants.WRIST_HOME_POSITION),
-      new InstantCommand(() -> RobotContainer.arm.stop()),
-      new InstantCommand(() -> RobotContainer.elevator.stopMotors())
-    );
+    addCommands(new SetElevatorPosition(RobotConstants.ELEVATOR_HIGH_POSITION),
+      new ParallelCommandGroup(
+      new SetWristPosition(RobotConstants.WRIST_CONE_HIGHSCORE_POSITION),
+      new SetArmPosition(RobotConstants.ARM_CONE_HIGHSCORE_POSITION)).withTimeout(1),
+      new SetWristIntakeSpeed(-1).withTimeout(0.75),
+      new ReturnWAEHome());
   }
 }

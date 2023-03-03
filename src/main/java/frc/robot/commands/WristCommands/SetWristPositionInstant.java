@@ -7,34 +7,39 @@ package frc.robot.commands.WristCommands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class SetWristIntakeSpeed extends CommandBase {
-  private double speed;
-  /** Creates a new setWristIntakeSpeed. */
-  public SetWristIntakeSpeed(double speed) {
+public class SetWristPositionInstant extends CommandBase {
+  /** Creates a new SetWristPosition. */
+  private double position;
+  private double tolerance = 0.020;
+  public SetWristPositionInstant(double position) {
+    this.position = position;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.wrist);
-    this.speed = speed;
+
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.wrist.setIntakeSpeed(speed);
+    System.out.println("Beginning SetWristPosition");
+    RobotContainer.wrist.setPosition(position);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+
+  }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.wrist.setIntakeSpeed(0);
+    //RobotContainer.wrist.stop();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
@@ -14,11 +15,18 @@ public class AutoLevelOnChargingStation extends CommandBase {
   private double error;
   private double currentAngle;
   private double drivePower;
-  private double kP = 0.01;
+  private double kP = 0.007;
 
   public AutoLevelOnChargingStation() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.s_Swerve);
+    if (DriverStation.getAlliance() == DriverStation.Alliance.Blue) {
+      RobotContainer.blinkin.set(-0.95);
+    } else if (DriverStation.getAlliance() == DriverStation.Alliance.Red) {
+      RobotContainer.blinkin.set(-0.93);
+    } else {
+      RobotContainer.blinkin.set(-0.99);
+    }
   }
 
   // Called when the command is initially scheduled.

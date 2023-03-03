@@ -7,10 +7,10 @@ package frc.robot.commands.WristCommands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class SetWristIntakeSpeed extends CommandBase {
+public class SetWristIntakeSpeedInstant extends CommandBase {
   private double speed;
   /** Creates a new setWristIntakeSpeed. */
-  public SetWristIntakeSpeed(double speed) {
+  public SetWristIntakeSpeedInstant(double speed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.wrist);
     this.speed = speed;
@@ -35,6 +35,6 @@ public class SetWristIntakeSpeed extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

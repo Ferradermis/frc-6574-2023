@@ -1,0 +1,78 @@
+{
+  "waypoints": [
+    {
+      "anchorPoint": {
+        "x": 1.9326182242108072,
+        "y": 0.548120070599115
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.932618224210806,
+        "y": 0.548120070599115
+      },
+      "holonomicAngle": 180.0,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": false,
+      "stopEvent": {
+        "names": [
+          "ScoreConeCubeHighRelease"
+        ],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    },
+    {
+      "anchorPoint": {
+        "x": 5.72378204585469,
+        "y": 1.2218509907105293
+      },
+      "prevControl": {
+        "x": 5.746620382129653,
+        "y": 0.4910242299117076
+      },
+      "nextControl": {
+        "x": 5.706628245496349,
+        "y": 1.7707726021774248
+      },
+      "holonomicAngle": 179.45343249263223,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": false,
+      "stopEvent": {
+        "names": [],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    },
+    {
+      "anchorPoint": {
+        "x": 3.793942630620304,
+        "y": 2.5464744946583915
+      },
+      "prevControl": {
+        "x": 4.764571922306238,
+        "y": 2.9461453794702464
+      },
+      "nextControl": null,
+      "holonomicAngle": 179.26162584904685,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": false,
+      "stopEvent": {
+        "names": [
+          "AutoLevelOnChargingStation"
+        ],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    }
+  ],
+  "markers": []
+}

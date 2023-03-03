@@ -1,6 +1,5 @@
 package frc.robot;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -10,23 +9,30 @@ import com.pathplanner.lib.PathPlannerTrajectory;
 import com.pathplanner.lib.auto.PIDConstants;
 import com.pathplanner.lib.auto.SwerveAutoBuilder;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.Filesystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.AutoLevelOnChargingStation;
 import frc.robot.commands.IntakeConeFromFloor;
+import frc.robot.commands.IntakeConeFromFloorInstant;
+import frc.robot.commands.IntakeConeFromShelf;
 import frc.robot.commands.IntakeCubeFromFloor;
+import frc.robot.commands.IntakeCubeFromFloorInstant;
 import frc.robot.commands.ReturnWAEHome;
 import frc.robot.commands.ScoreConeCubeHigh;
+import frc.robot.commands.ScoreConeCubeHighRelease;
 import frc.robot.commands.ScoreConeCubeMid;
+import frc.robot.commands.ScoreCubeHighAuto;
 import frc.robot.commands.TeleopSwerve;
-import frc.robot.commands.WristCommands.setWristIntakeSpeed;
+import frc.robot.commands.WristCommands.SetWristIntakeSpeed;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Swerve;
@@ -44,6 +50,8 @@ public class RobotContainer {
     public static CommandXboxController operatorController = new CommandXboxController(1);
     public static Joystick driver = new Joystick(0);
     public static Joystick operator = new Joystick(1);
+
+    public static Spark blinkin = new Spark(2);
 
     /* Drive Controls */
     private final int translationAxis = XboxController.Axis.kLeftY.value;
@@ -84,23 +92,41 @@ public class RobotContainer {
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
 
+        CameraServer.startAutomaticCapture();
+
         // Map all of the events referenced by PathPlanner to their respective commands
         eventMap.put("IntakeConeFromFloor", new IntakeConeFromFloor());
         eventMap.put("IntakeCubeFromFloor", new IntakeCubeFromFloor());
+        eventMap.put("IntakeConeFromFloorInstant", new IntakeConeFromFloorInstant());
+        eventMap.put("IntakeCubeFromFloorInstant", new IntakeCubeFromFloorInstant());
         eventMap.put("ReturnWAEHome", new ReturnWAEHome());
         eventMap.put("ScoreConeCubeHigh", new ScoreConeCubeHigh());
         eventMap.put("ScoreConeCubeMid", new ScoreConeCubeMid());
+        eventMap.put("ScoreConeCubeHighRelease", new ScoreConeCubeHighRelease());
+        eventMap.put("AutoLevelOnChargingStation", new AutoLevelOnChargingStation());
+        eventMap.put("ScoreCubeHighAuto", new ScoreCubeHighAuto());
 
-        double autoVelocityConstraint = 1.0;
+        double autoVelocityConstraint = 2.0;
         double autoAccelerationConstraint = 2.0;
 
         // Build out sendable chooser commands for each of the generated PathPlanner routines
-        File[] fileList = Filesystem.getDeployDirectory().toPath().resolve("output/").toFile().listFiles();
+        /*File[] fileList = Filesystem.getDeployDirectory().toPath().resolve("output/").toFile().listFiles();
         for (File file : fileList) {
             if (file.getName().endsWith(".path")) {
                 autoChooser.addOption(file.getName().replace(".path", ""), autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup(file.getName().replace(".path", ""), new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
             }
-        }
+        }*/
+
+        autoChooser.addOption("Two Piece Left", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Two Piece Red+Blue Left", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
+        autoChooser.addOption("Two Piece Right", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Two Piece Red+Blue Right", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
+        autoChooser.addOption("Score and Drive Back", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Score and Drive Back", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
+        autoChooser.addOption("One Piece Level Left", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("One Piece Level Left", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
+        autoChooser.addOption("One Piece Level Right", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("One Piece Level Right", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
+        //autoChooser.addOption("TEST: Shoot Cube High", new ScoreCubeHighAuto());
+        //autoChooser.addOption("TEST: Shoot Cone High", new ScoreConeCubeHighRelease());
+
+
+        SmartDashboard.putData(autoChooser);
 
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
@@ -143,10 +169,11 @@ public class RobotContainer {
 
         /* Operator Buttons */
         operatorController.b().onTrue(new ReturnWAEHome());
-        operatorController.rightBumper().whileTrue(new setWristIntakeSpeed(1));
-        operatorController.leftBumper().whileTrue(new setWristIntakeSpeed(-1));
+        operatorController.rightBumper().whileTrue(new SetWristIntakeSpeed(1));
+        operatorController.leftBumper().whileTrue(new SetWristIntakeSpeed(-1));
         operatorController.a().onTrue(new ScoreConeCubeMid());
         operatorController.x().onTrue(new ScoreConeCubeHigh());
+        operatorController.y().onTrue(new IntakeConeFromShelf());
 
     }
 

@@ -1,0 +1,107 @@
+{
+  "waypoints": [
+    {
+      "anchorPoint": {
+        "x": 1.8983607197983627,
+        "y": 4.898823130979595
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.2295165957853285,
+        "y": 4.339283892242999
+      },
+      "holonomicAngle": 178.68153232635896,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": false,
+      "stopEvent": {
+        "names": [
+          "ScoreConeCubeHighRelease"
+        ],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    },
+    {
+      "anchorPoint": {
+        "x": 4.661799409068904,
+        "y": 4.63618226381752
+      },
+      "prevControl": {
+        "x": 4.684637745343867,
+        "y": 4.63618226381752
+      },
+      "nextControl": {
+        "x": 4.684637745343867,
+        "y": 4.63618226381752
+      },
+      "holonomicAngle": 0,
+      "isReversal": true,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": true,
+      "stopEvent": {
+        "names": [
+          "IntakeCubeFromFloorInstant"
+        ],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    },
+    {
+      "anchorPoint": {
+        "x": 7.505172275301816,
+        "y": 4.544828918717667
+      },
+      "prevControl": {
+        "x": 6.614477160578251,
+        "y": 4.510571414305222
+      },
+      "nextControl": {
+        "x": 8.395867390025382,
+        "y": 4.5790864231301125
+      },
+      "holonomicAngle": 0,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": true,
+      "stopEvent": {
+        "names": [
+          "ReturnWAEHome"
+        ],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    },
+    {
+      "anchorPoint": {
+        "x": 1.944037392348289,
+        "y": 4.362122228517961
+      },
+      "prevControl": {
+        "x": 3.348595073258523,
+        "y": 4.681858936367445
+      },
+      "nextControl": null,
+      "holonomicAngle": 179.2559407971113,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": false,
+      "stopEvent": {
+        "names": [
+          "ScoreCubeHighAuto"
+        ],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    }
+  ],
+  "markers": []
+}
