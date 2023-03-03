@@ -31,6 +31,7 @@ import frc.robot.commands.ScoreConeCubeHigh;
 import frc.robot.commands.ScoreConeCubeHighRelease;
 import frc.robot.commands.ScoreConeCubeMid;
 import frc.robot.commands.ScoreCubeHighAuto;
+import frc.robot.commands.ScoreCubeHighAutoRelease;
 import frc.robot.commands.TeleopSwerve;
 import frc.robot.commands.WristCommands.SetWristIntakeSpeed;
 import frc.robot.subsystems.Arm;
@@ -105,9 +106,11 @@ public class RobotContainer {
         eventMap.put("ScoreConeCubeHighRelease", new ScoreConeCubeHighRelease());
         eventMap.put("AutoLevelOnChargingStation", new AutoLevelOnChargingStation());
         eventMap.put("ScoreCubeHighAuto", new ScoreCubeHighAuto());
+        eventMap.put("ScoreCubeHighAutoRelease", new ScoreCubeHighAutoRelease());
 
-        double autoVelocityConstraint = 2.0;
-        double autoAccelerationConstraint = 2.0;
+
+        double autoVelocityConstraint = 2.5;
+        double autoAccelerationConstraint = 2.5;
 
         // Build out sendable chooser commands for each of the generated PathPlanner routines
         /*File[] fileList = Filesystem.getDeployDirectory().toPath().resolve("output/").toFile().listFiles();

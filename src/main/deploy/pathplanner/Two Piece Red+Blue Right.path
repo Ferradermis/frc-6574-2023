@@ -71,7 +71,34 @@
       "isStopPoint": true,
       "stopEvent": {
         "names": [
-          "ReturnWAEHome"
+          "ReturnWAEHomeTimeout"
+        ],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    },
+    {
+      "anchorPoint": {
+        "x": 3.028858365409038,
+        "y": 0.9135334509985259
+      },
+      "prevControl": {
+        "x": 4.366412611961421,
+        "y": 0.4879480089136705
+      },
+      "nextControl": {
+        "x": 2.7776366663844434,
+        "y": 0.993467627960898
+      },
+      "holonomicAngle": 180.0,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": true,
+      "stopEvent": {
+        "names": [
+          "ScoreCubeHighAuto"
         ],
         "executionBehavior": "parallel",
         "waitBehavior": "none",
@@ -84,18 +111,18 @@
         "y": 1.073401804923269
       },
       "prevControl": {
-        "x": 3.302918400708597,
-        "y": 0.9021142828610453
+        "x": 1.8641032153859183,
+        "y": 1.0505634686483054
       },
       "nextControl": null,
-      "holonomicAngle": 180.0,
+      "holonomicAngle": -179.02897806892094,
       "isReversal": false,
       "velOverride": null,
       "isLocked": false,
       "isStopPoint": false,
       "stopEvent": {
         "names": [
-          "ScoreCubeHighAuto"
+          "ScoreCubeHighAutoRelease"
         ],
         "executionBehavior": "parallel",
         "waitBehavior": "none",

@@ -7,24 +7,20 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.RobotConstants;
-import frc.robot.commands.ElevatorCommands.SetElevatorPositionInstant;
-import frc.robot.commands.WristCommands.SetWristIntakeSpeedInstant;
-import frc.robot.commands.WristCommands.SetWristPositionInstant;
+import frc.robot.commands.ArmCommands.SetArmPosition;
+import frc.robot.commands.ElevatorCommands.SetElevatorPosition;
+import frc.robot.commands.WristCommands.SetWristIntakeSpeed;
+import frc.robot.commands.WristCommands.SetWristPosition;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class IntakeCubeFromFloorInstant extends SequentialCommandGroup {
-  /** Creates a new IntakeCubeFromFloor. */
-  public IntakeCubeFromFloorInstant() {
+public class ScoreCubeHighAutoRelease extends SequentialCommandGroup {
+  /** Creates a new ScoreCubeHighAuto. */
+  public ScoreCubeHighAutoRelease() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(
-    new ParallelCommandGroup(
-      new SetElevatorPositionInstant(RobotConstants.ELEVATOR_INTAKECUBE_POSITION),
-      new SetWristPositionInstant(RobotConstants.WRIST_CUBE_FLOOR_INTAKE_POSITION)),
-      new SetWristIntakeSpeedInstant(1)
-      //new SetArmPosition(RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION)
-    );
+    addCommands(new SetWristIntakeSpeed(-1).withTimeout(1),
+    new ReturnWAEHome());
   }
 }

@@ -2,13 +2,13 @@
   "waypoints": [
     {
       "anchorPoint": {
-        "x": 1.8983607197983627,
+        "x": 1.9326182242108072,
         "y": 4.898823130979595
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.2295165957853285,
-        "y": 4.339283892242999
+        "x": 2.480738294809923,
+        "y": 4.647601431955001
       },
       "holonomicAngle": 178.68153232635896,
       "isReversal": false,
@@ -71,7 +71,7 @@
       "isStopPoint": true,
       "stopEvent": {
         "names": [
-          "ReturnWAEHome"
+          "ReturnWAEHomeTimeout"
         ],
         "executionBehavior": "parallel",
         "waitBehavior": "none",
@@ -80,19 +80,22 @@
     },
     {
       "anchorPoint": {
-        "x": 1.944037392348289,
-        "y": 4.362122228517961
+        "x": 2.857570843346815,
+        "y": 4.63618226381752
       },
       "prevControl": {
-        "x": 3.348595073258523,
-        "y": 4.681858936367445
+        "x": 4.285425548173379,
+        "y": 4.826562891127732
       },
-      "nextControl": null,
-      "holonomicAngle": 179.2559407971113,
+      "nextControl": {
+        "x": 2.6862833212845914,
+        "y": 4.613343927542556
+      },
+      "holonomicAngle": -178.85423716182495,
       "isReversal": false,
       "velOverride": null,
       "isLocked": false,
-      "isStopPoint": false,
+      "isStopPoint": true,
       "stopEvent": {
         "names": [
           "ScoreCubeHighAuto"
@@ -101,7 +104,34 @@
         "waitBehavior": "none",
         "waitTime": 0
       }
+    },
+    {
+      "anchorPoint": {
+        "x": 1.8983607197983627,
+        "y": 4.4077989010678875
+      },
+      "prevControl": {
+        "x": 1.7841690384235467,
+        "y": 4.384960564792925
+      },
+      "nextControl": null,
+      "holonomicAngle": 178.87669728592456,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": false,
+      "stopEvent": {
+        "names": [
+          "ScoreCubeHighAutoRelease"
+        ],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
     }
   ],
+  "maxVelocity": 2.5,
+  "maxAcceleration": 2.5,
+  "isReversed": null,
   "markers": []
 }

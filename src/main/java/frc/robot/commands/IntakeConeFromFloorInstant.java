@@ -25,7 +25,7 @@ public class IntakeConeFromFloorInstant extends SequentialCommandGroup {
       new SetElevatorPositionInstant(RobotConstants.ELEVATOR_INTAKECUBE_POSITION),
       new SetWristPositionInstant(RobotConstants.WRIST_CONE_FLOOR_INTAKE_POSITION)),
       new SetArmPositionInstant(RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION),
-      new SetWristIntakeSpeedInstant(1)
+      new SetWristIntakeSpeedInstant(-1)
     );
   }
 }

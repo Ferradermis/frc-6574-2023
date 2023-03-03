@@ -50,7 +50,7 @@ public class Wrist extends SubsystemBase {
     wristMotor.setSmartCurrentLimit(45);
     intakeMotor.setSmartCurrentLimit(25);
 
-    kP = 2.5;
+    kP = 2.8; //2.5 last working value
     kI = 0;
     kD = 0;
     kIz = 0;

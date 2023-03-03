@@ -37,8 +37,8 @@ public class TeleopSwerve extends CommandBase {
     @Override
     public void execute() {
         /* Get Values, Deadband*/
-        double translationVal = MathUtil.applyDeadband(translationSup.getAsDouble(), Constants.stickDeadband);
-        double strafeVal = MathUtil.applyDeadband(strafeSup.getAsDouble(), Constants.stickDeadband);
+        double translationVal = -MathUtil.applyDeadband(translationSup.getAsDouble(), Constants.stickDeadband);
+        double strafeVal = -MathUtil.applyDeadband(strafeSup.getAsDouble(), Constants.stickDeadband);
         double rotationVal = MathUtil.applyDeadband(rotationSup.getAsDouble(), Constants.stickDeadband);
 
         double speedLimit = Constants.Swerve.maxSpeed;
@@ -46,7 +46,7 @@ public class TeleopSwerve extends CommandBase {
         // check if any other tippy commands are scheduled, override with a lower value
         if (RobotContainer.elevator.leftMotor.getEncoder().getPosition() >= 5) {
             speedLimit *= 0.3;
-            angularVelocityLimit *= 0.5;
+            angularVelocityLimit *= 0.3;
         }
         //else if (RobotContainer.driver.getTrigger() == true) {
         //    speedLimit *= 1.5;
