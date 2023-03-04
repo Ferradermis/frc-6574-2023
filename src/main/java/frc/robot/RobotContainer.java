@@ -125,6 +125,7 @@ public class RobotContainer {
         autoChooser.addOption("Score and Drive Back", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Score and Drive Back", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
         autoChooser.addOption("One Piece Level Left", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("One Piece Level Left", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
         autoChooser.addOption("One Piece Level Right", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("One Piece Level Right", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
+        //autoChooser.addOption("TEST: Score Cone Timing", new ScoreConeCubeHighRelease());
         //autoChooser.addOption("TEST: Shoot Cube High", new ScoreCubeHighAuto());
         //autoChooser.addOption("TEST: Shoot Cone High", new ScoreConeCubeHighRelease());
 

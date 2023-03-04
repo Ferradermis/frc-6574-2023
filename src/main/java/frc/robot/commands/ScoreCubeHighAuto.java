@@ -20,9 +20,9 @@ public class ScoreCubeHighAuto extends SequentialCommandGroup {
   public ScoreCubeHighAuto() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new SetElevatorPosition(RobotConstants.ELEVATOR_HIGH_POSITION),
+    addCommands(new SetElevatorPosition(RobotConstants.ELEVATOR_HIGH_POSITION).withTimeout(0.5),
       new ParallelCommandGroup(
-      new SetWristPosition(RobotConstants.WRIST_CONE_HIGHSCORE_POSITION),
-      new SetArmPosition(RobotConstants.ARM_CONE_HIGHSCORE_POSITION)).withTimeout(1));
+      new SetWristPosition(RobotConstants.WRIST_CONE_HIGHSCORE_POSITION).withTimeout(0.5),
+      new SetArmPosition(RobotConstants.ARM_CONE_HIGHSCORE_POSITION)).withTimeout(0.5));
   }
 }

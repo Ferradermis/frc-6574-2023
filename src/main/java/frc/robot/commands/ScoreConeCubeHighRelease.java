@@ -25,10 +25,10 @@ public class ScoreConeCubeHighRelease extends SequentialCommandGroup {
     addCommands(
       new SetElevatorPosition(RobotConstants.ELEVATOR_HIGH_POSITION),
       new ParallelCommandGroup(
-                               new SetWristPosition(RobotConstants.WRIST_CONE_HIGHSCORE_POSITION),
+                               new SetWristPosition(RobotConstants.WRIST_CONE_HIGHSCORE_POSITION).withTimeout(1),
                                new SetArmPosition(RobotConstants.ARM_CONE_HIGHSCORE_POSITION)).withTimeout(1),
-      new SetWristIntakeSpeed(1).withTimeout(0.75),
-      new ReturnWAEHome()
+      new SetWristIntakeSpeed(1).withTimeout(0.5),
+      new ReturnWAEHomeTimeout()
 
     );
       //new SetArmPosition(RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION)
