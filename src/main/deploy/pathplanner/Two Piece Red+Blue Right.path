@@ -41,9 +41,11 @@
       "isReversal": false,
       "velOverride": null,
       "isLocked": false,
-      "isStopPoint": false,
+      "isStopPoint": true,
       "stopEvent": {
-        "names": [],
+        "names": [
+          "IntakeCubeFromFloorInstant"
+        ],
         "executionBehavior": "parallel",
         "waitBehavior": "none",
         "waitTime": 0
@@ -51,16 +53,16 @@
     },
     {
       "anchorPoint": {
-        "x": 7.368142257652036,
-        "y": 0.8906951147235624
+        "x": 7.174016399314849,
+        "y": 0.7308267607988216
       },
       "prevControl": {
-        "x": 6.368142257652036,
-        "y": 0.8906951147235624
+        "x": 6.174016399314849,
+        "y": 0.7308267607988216
       },
       "nextControl": {
-        "x": 8.368142257652037,
-        "y": 0.8906951147235624
+        "x": 8.17401639931485,
+        "y": 0.7308267607988216
       },
       "holonomicAngle": 0,
       "isReversal": false,
@@ -105,15 +107,15 @@
     },
     {
       "anchorPoint": {
-        "x": 1.9097798879358443,
-        "y": 1.073401804923269
+        "x": 2.0011332330356972,
+        "y": 1.0962401411982325
       },
       "prevControl": {
-        "x": 1.8641032153859183,
-        "y": 1.0505634686483054
+        "x": 1.9500651606318804,
+        "y": 1.0962401411982325
       },
       "nextControl": null,
-      "holonomicAngle": -179.02897806892094,
+      "holonomicAngle": -180.0,
       "isReversal": false,
       "velOverride": 2.0,
       "isLocked": false,

@@ -27,6 +27,7 @@ import frc.robot.commands.IntakeConeFromShelf;
 import frc.robot.commands.IntakeCubeFromFloor;
 import frc.robot.commands.IntakeCubeFromFloorInstant;
 import frc.robot.commands.ReturnWAEHome;
+import frc.robot.commands.ReturnWAEHomeTimeout;
 import frc.robot.commands.ScoreConeCubeHigh;
 import frc.robot.commands.ScoreConeCubeHighRelease;
 import frc.robot.commands.ScoreConeCubeMid;
@@ -101,6 +102,7 @@ public class RobotContainer {
         eventMap.put("IntakeConeFromFloorInstant", new IntakeConeFromFloorInstant());
         eventMap.put("IntakeCubeFromFloorInstant", new IntakeCubeFromFloorInstant());
         eventMap.put("ReturnWAEHome", new ReturnWAEHome());
+        eventMap.put("ReturnWAEHomeTimeout", new ReturnWAEHomeTimeout());
         eventMap.put("ScoreConeCubeHigh", new ScoreConeCubeHigh());
         eventMap.put("ScoreConeCubeMid", new ScoreConeCubeMid());
         eventMap.put("ScoreConeCubeHighRelease", new ScoreConeCubeHighRelease());
