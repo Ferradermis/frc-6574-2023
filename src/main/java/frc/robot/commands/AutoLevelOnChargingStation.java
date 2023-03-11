@@ -71,7 +71,7 @@ public class AutoLevelOnChargingStation extends CommandBase {
 
   // Returns true when the command should end.
   @Override
-  public boolean isFinished() {
+  public boolean isFinished() { //commenting out lines 75 through 77 should allow it to balance indefinitely; let driver take over in teleop if needed
     if (Math.abs(error) < 1) {
       return true;
     }
