@@ -11,6 +11,7 @@ public class SetWristPositionInstant extends CommandBase {
   /** Creates a new SetWristPosition. */
   private double position;
   private double tolerance = 0.020;
+  
   public SetWristPositionInstant(double position) {
     this.position = position;
     // Use addRequirements() here to declare subsystem dependencies.

@@ -59,8 +59,8 @@ public class Elevator extends SubsystemBase {
     kD = 0;
     kIz = 0;
     kFF = 0;
-    kMaxOutput = .5;
-    kMinOutput = -.5;
+    kMaxOutput = .75;
+    kMinOutput = -.75;
 
     elevatorPIDController.setP(kP);
     elevatorPIDController.setI(kI);

@@ -10,9 +10,7 @@ import frc.robot.Constants.RobotConstants;
 import frc.robot.commands.ArmCommands.SetArmPosition;
 import frc.robot.commands.ElevatorCommands.SetElevatorPosition;
 import frc.robot.commands.WristCommands.SetWristIntakeSpeed;
-import frc.robot.commands.WristCommands.SetWristIntakeSpeedInstant;
 import frc.robot.commands.WristCommands.SetWristPosition;
-import frc.robot.commands.WristCommands.SetWristPositionInstant;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
