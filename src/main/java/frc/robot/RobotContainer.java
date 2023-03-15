@@ -21,19 +21,19 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.AutoLevelOnChargingStation;
-import frc.robot.commands.IntakeConeFromFloor;
 import frc.robot.commands.IntakeConeFromFloorInstant;
-import frc.robot.commands.IntakeConeFromShelf;
-import frc.robot.commands.IntakeCubeFromFloor;
 import frc.robot.commands.IntakeCubeFromFloorInstant;
-import frc.robot.commands.ReturnWAEHome;
 import frc.robot.commands.ReturnWAEHomeTimeout;
-import frc.robot.commands.ScoreConeCubeHigh;
 import frc.robot.commands.ScoreConeCubeHighRelease;
-import frc.robot.commands.ScoreConeCubeMid;
 import frc.robot.commands.ScoreCubeHighAuto;
 import frc.robot.commands.ScoreCubeHighAutoRelease;
 import frc.robot.commands.TeleopSwerve;
+import frc.robot.commands.FullSystemCommandsTeleop.IntakeConeFromFloor;
+import frc.robot.commands.FullSystemCommandsTeleop.IntakeConeFromShelf;
+import frc.robot.commands.FullSystemCommandsTeleop.IntakeCubeFromFloor;
+import frc.robot.commands.FullSystemCommandsTeleop.ReturnWAEHome;
+import frc.robot.commands.FullSystemCommandsTeleop.ScoreConeCubeHigh;
+import frc.robot.commands.FullSystemCommandsTeleop.ScoreConeCubeMid;
 import frc.robot.commands.WristCommands.SetWristIntakeSpeed;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Elevator;
@@ -160,8 +160,8 @@ public class RobotContainer {
 
         driverController.leftTrigger().whileTrue(new TeleopSwerve( //Drive robot centric
             s_Swerve,
-            () -> -driverController.getRawAxis(translationAxis),
-            () -> -driverController.getRawAxis(strafeAxis),
+            () -> driverController.getRawAxis(translationAxis),
+            () -> driverController.getRawAxis(strafeAxis),
             () -> -driverController.getRawAxis(rotationAxis),
             () -> true
         ));
