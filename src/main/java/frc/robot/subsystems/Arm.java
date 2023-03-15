@@ -46,13 +46,13 @@ public class Arm extends SubsystemBase {
     //armMotor.getEncoder().setPosition(0);
 
 
-    kP = 3;
+    kP = 3.25;
     kI = 0;
     kD = 0;
     kIz = 0;
     kFF = 0;
-    kMaxOutput = .5;
-    kMinOutput = -.5;
+    kMaxOutput = .85;
+    kMinOutput = -.85;
 
     armPIDController.setP(kP);
     armPIDController.setI(kI);

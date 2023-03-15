@@ -23,7 +23,7 @@ public class Elevator extends SubsystemBase {
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
 
   private double maxSpeed = 0.25;
-  private float maxElevatorExtension = 32;
+  private float maxElevatorExtension = 32.5f;
 
   /** Creates a new Elevator. Gatorvator*/
   public Elevator() {
