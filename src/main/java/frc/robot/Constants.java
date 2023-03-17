@@ -163,6 +163,7 @@ public final class Constants {
         public static final double ELEVATOR_LOW_POSITION = 0;
         public static final double ELEVATOR_MID_POSITION = 20.00;
         public static final double ELEVATOR_HIGH_POSITION = 32;
+        public static final double ELEVATOR_CHUTE_POSITION = 20.00;
 
         /* Wrist position constants */
         public static final double WRIST_HOME_POSITION = .042;
@@ -176,6 +177,16 @@ public final class Constants {
         public static final double WRIST_CUBE_MIDSCORE_POSITION = 0;
         public static final double WRIST_CUBE_HIGHSCORE_POSITION = 0;
 
+        public static final double WRIST_CHUTE_POSITION = .12;
+
+        /* Wrist intake constants */
+        public static final double INTAKE_CONE_SPEED = -1;
+        public static final double SCORE_CONE_SPEED = 1;
+
+        public static final double INTAKE_CUBE_SPEED = 1;
+        public static final double SCORE_CUBE_SPEED = -1;
+
+
         /* Arm position constants */
         public static final double ARM_HOME_POSITION = 0;
         public static final double ARM_CONE_FLOOR_INTAKE_POSITION = 0;
@@ -187,5 +198,7 @@ public final class Constants {
         public static final double ARM_CUBE_LOWSCORE_POSITION = 0;
         public static final double ARM_CUBE_MIDSCORE_POSITION = 0;
         public static final double ARM_CUBE_HIGHSCORE_POSITION = 0;
+
+        public static final double ARM_CHUTE_POSITION = 0;
     }
 }

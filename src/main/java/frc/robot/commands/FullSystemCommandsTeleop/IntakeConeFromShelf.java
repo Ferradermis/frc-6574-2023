@@ -10,6 +10,7 @@ import frc.robot.Constants.RobotConstants;
 import frc.robot.commands.SetBlinkin;
 import frc.robot.commands.ArmCommands.SetArmPosition;
 import frc.robot.commands.ElevatorCommands.SetElevatorPosition;
+import frc.robot.commands.WristCommands.IntakeCone;
 import frc.robot.commands.WristCommands.SetWristPosition;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -25,9 +26,9 @@ public class IntakeConeFromShelf extends SequentialCommandGroup {
       new SetElevatorPosition(RobotConstants.ELEVATOR_HIGH_POSITION),
       new ParallelCommandGroup(
                                new SetWristPosition(RobotConstants.WRIST_CONE_FLOOR_INTAKE_POSITION),
-                               new SetArmPosition(RobotConstants.ARM_CONE_HIGHSCORE_POSITION))
-
-    );
+                               new SetArmPosition(RobotConstants.ARM_CONE_HIGHSCORE_POSITION),
+                               new IntakeCone())
+      );
       //new SetArmPosition(RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION)
   }
 }

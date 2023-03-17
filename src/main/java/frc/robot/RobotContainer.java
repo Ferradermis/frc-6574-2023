@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -34,9 +36,11 @@ import frc.robot.commands.FullSystemCommandsTeleop.IntakeCubeFromFloor;
 import frc.robot.commands.FullSystemCommandsTeleop.ReturnWAEHome;
 import frc.robot.commands.FullSystemCommandsTeleop.ScoreConeCubeHigh;
 import frc.robot.commands.FullSystemCommandsTeleop.ScoreConeCubeMid;
-import frc.robot.commands.WristCommands.SetWristIntakeSpeed;
+import frc.robot.commands.WristCommands.ScoreCone;
+import frc.robot.commands.WristCommands.ScoreCube;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.Swerve;
 import frc.robot.subsystems.Wrist;
 
@@ -73,7 +77,8 @@ public class RobotContainer {
     public static Elevator elevator = new Elevator();
     public static Wrist wrist = new Wrist();
     public static Arm arm = new Arm();
-
+    public static Limelight limelight = new Limelight();
+    
     HashMap<String, Command> eventMap = new HashMap<>();
 
     SwerveAutoBuilder autoBuilder = new SwerveAutoBuilder(
@@ -93,6 +98,10 @@ public class RobotContainer {
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
+
+        //Shuffleboard Tabs. Default ones are SmartDashboard and LiveWindow
+        ShuffleboardTab tab = Shuffleboard.getTab("Limelight Data");
+
 
         CameraServer.startAutomaticCapture();
 
@@ -155,6 +164,7 @@ public class RobotContainer {
      * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() { //These are driver controls
+
         /* Driver Buttons */
         //zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
 
@@ -164,19 +174,19 @@ public class RobotContainer {
             () -> driverController.getRawAxis(strafeAxis),
             () -> -driverController.getRawAxis(rotationAxis),
             () -> true
-        ));
+            ));
 
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
         driverController.x().onTrue(new InstantCommand(() -> s_Swerve.resetModulesToAbsolute()));
         driverController.rightBumper().onTrue(new IntakeCubeFromFloor());
         driverController.leftBumper().onTrue(new IntakeConeFromFloor());
         driverController.b().onTrue(new ReturnWAEHome());
-        driverController.start().onTrue(new AutoLevelOnChargingStation());
+        //driverController.start().onTrue(new AutoLevelOnChargingStation());
 
         /* Operator Buttons */
         operatorController.b().onTrue(new ReturnWAEHome());
-        operatorController.rightBumper().whileTrue(new SetWristIntakeSpeed(1));
-        operatorController.leftBumper().whileTrue(new SetWristIntakeSpeed(-1));
+        operatorController.rightBumper().whileTrue(new ScoreCube());
+        operatorController.leftBumper().whileTrue(new ScoreCone());
         operatorController.a().onTrue(new ScoreConeCubeMid());
         operatorController.x().onTrue(new ScoreConeCubeHigh());
         operatorController.y().onTrue(new IntakeConeFromShelf());
