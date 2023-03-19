@@ -123,7 +123,7 @@ public class RobotContainer {
 
 
         double autoVelocityConstraint = 2.5;
-        double autoAccelerationConstraint = 2.5;
+        double autoAccelerationConstraint = 2.7;
 
         // Build out sendable chooser commands for each of the generated PathPlanner routines
         /*File[] fileList = Filesystem.getDeployDirectory().toPath().resolve("output/").toFile().listFiles();
@@ -138,6 +138,7 @@ public class RobotContainer {
         autoChooser.addOption("Score and Drive Back", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Score and Drive Back", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
         autoChooser.addOption("One Piece Level Left", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("One Piece Level Left", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
         autoChooser.addOption("One Piece Level Right", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("One Piece Level Right", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
+        autoChooser.addOption("Calibrate Path Distance", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Calibrate Path Distance", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
         //autoChooser.addOption("TEST: Score Cone Timing", new ScoreConeCubeHighRelease());
         //autoChooser.addOption("TEST: Shoot Cube High", new ScoreCubeHighAuto());
         //autoChooser.addOption("TEST: Shoot Cone High", new ScoreConeCubeHighRelease());
@@ -182,11 +183,11 @@ public class RobotContainer {
         driverController.x().onTrue(new InstantCommand(() -> s_Swerve.resetModulesToAbsolute()));
         driverController.rightBumper().onTrue(new IntakeCubeFromFloor());
         driverController.leftBumper().onTrue(new IntakeConeFromFloor());
-        driverController.b().onTrue(new ReturnWAEHome());
+        driverController.b().onTrue(new ReturnWAEHomeTimeout());
         //driverController.start().onTrue(new AutoLevelOnChargingStation());
 
         /* Operator Buttons */
-        operatorController.b().onTrue(new ReturnWAEHome());
+        operatorController.b().onTrue(new ReturnWAEHomeTimeout());
         operatorController.rightBumper().whileTrue(new ScoreCube());
         operatorController.leftBumper().whileTrue(new ScoreCone());
         operatorController.a().onTrue(new ScoreConeCubeMid());

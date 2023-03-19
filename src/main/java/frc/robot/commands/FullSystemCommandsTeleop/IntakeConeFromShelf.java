@@ -7,7 +7,6 @@ package frc.robot.commands.FullSystemCommandsTeleop;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.RobotConstants;
-import frc.robot.commands.SetBlinkin;
 import frc.robot.commands.ArmCommands.SetArmPosition;
 import frc.robot.commands.ElevatorCommands.SetElevatorPosition;
 import frc.robot.commands.WristCommands.IntakeCone;
@@ -22,7 +21,6 @@ public class IntakeConeFromShelf extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new SetBlinkin(0.69),
       new SetElevatorPosition(RobotConstants.ELEVATOR_HIGH_POSITION),
       new ParallelCommandGroup(
                                new SetWristPosition(RobotConstants.WRIST_CONE_FLOOR_INTAKE_POSITION),

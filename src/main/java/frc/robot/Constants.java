@@ -172,7 +172,7 @@ public final class Constants {
         public static final double WRIST_CONE_MIDSCORE_POSITION = .12;
         public static final double WRIST_CONE_HIGHSCORE_POSITION = .08;
 
-        public static final double WRIST_CUBE_FLOOR_INTAKE_POSITION = .24;
+        public static final double WRIST_CUBE_FLOOR_INTAKE_POSITION = .245;
         public static final double WRIST_CUBE_LOWSCORE_POSITION = 0;
         public static final double WRIST_CUBE_MIDSCORE_POSITION = 0;
         public static final double WRIST_CUBE_HIGHSCORE_POSITION = 0;

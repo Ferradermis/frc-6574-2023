@@ -5,9 +5,7 @@
 package frc.robot.commands.FullSystemCommandsTeleop;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.RobotConstants;
-import frc.robot.commands.SetBlinkin;
 import frc.robot.commands.ElevatorCommands.SetElevatorPosition;
 import frc.robot.commands.WristCommands.IntakeCube;
 import frc.robot.commands.WristCommands.SetWristPosition;
@@ -15,17 +13,16 @@ import frc.robot.commands.WristCommands.SetWristPosition;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class IntakeCubeFromFloor extends SequentialCommandGroup {
+public class IntakeCubeFromFloor extends ParallelCommandGroup {
   /** Creates a new IntakeCubeFromFloor. */
   public IntakeCubeFromFloor() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-    new ParallelCommandGroup(
-      new SetBlinkin(0.91),
       new SetElevatorPosition(RobotConstants.ELEVATOR_INTAKECUBE_POSITION),
-      new SetWristPosition(RobotConstants.WRIST_CUBE_FLOOR_INTAKE_POSITION)),
-      new IntakeCube());
+      new SetWristPosition(RobotConstants.WRIST_CUBE_FLOOR_INTAKE_POSITION),
+      new IntakeCube()
+      );
       //new SetArmPosition(RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION)
   }
 }
