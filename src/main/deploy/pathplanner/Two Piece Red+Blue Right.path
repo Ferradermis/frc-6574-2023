@@ -7,8 +7,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.594929976184739,
-        "y": 1.1761743181606024
+        "x": 2.475636003903587,
+        "y": 0.689143483550126
       },
       "holonomicAngle": 179.85259669930753,
       "isReversal": false,
@@ -51,20 +51,20 @@
     },
     {
       "anchorPoint": {
-        "x": 6.982563087933194,
-        "y": 0.9702596598175656
+        "x": 7.0551091979376945,
+        "y": 0.9158500773141907
       },
       "prevControl": {
-        "x": 6.910016977928693,
-        "y": 0.9611913960670032
+        "x": 7.127882195110269,
+        "y": 0.9228687927775354
       },
       "nextControl": {
-        "x": 7.0551091979376945,
-        "y": 0.9793279235681279
+        "x": 5.268661239076865,
+        "y": 0.7435530660535011
       },
       "holonomicAngle": 0,
       "isReversal": false,
-      "velOverride": 1.0,
+      "velOverride": 0.5,
       "isLocked": false,
       "isStopPoint": false,
       "stopEvent": {
@@ -78,25 +78,25 @@
     },
     {
       "anchorPoint": {
-        "x": 3.028858365409038,
-        "y": 0.9135334509985259
+        "x": 3.173892312696906,
+        "y": 0.9611913960670033
       },
       "prevControl": {
-        "x": 4.216742644011604,
-        "y": 0.6800752197995625
+        "x": 3.6729185185017856,
+        "y": 0.9535863263544604
       },
       "nextControl": {
-        "x": 2.7701749084852834,
-        "y": 0.9643732368107418
+        "x": 2.6435072709518064,
+        "y": 0.9692743688047891
       },
-      "holonomicAngle": 180.0,
+      "holonomicAngle": -179.88744864286068,
       "isReversal": false,
-      "velOverride": null,
+      "velOverride": 2.0,
       "isLocked": false,
-      "isStopPoint": true,
+      "isStopPoint": false,
       "stopEvent": {
         "names": [
-          "ScoreCubeHighAuto"
+          "ScoreCubeHighAutoRelease"
         ],
         "executionBehavior": "parallel",
         "waitBehavior": "none",
@@ -105,17 +105,17 @@
     },
     {
       "anchorPoint": {
-        "x": 2.0011332330356972,
-        "y": 1.0962401411982325
+        "x": 1.7411066401080173,
+        "y": 1.0609422973231921
       },
       "prevControl": {
-        "x": 1.9500651606318804,
-        "y": 1.0962401411982325
+        "x": 1.9434373094083754,
+        "y": 1.0273112568083909
       },
       "nextControl": null,
-      "holonomicAngle": -180.0,
+      "holonomicAngle": 179.20427644726064,
       "isReversal": false,
-      "velOverride": 2.0,
+      "velOverride": null,
       "isLocked": false,
       "isStopPoint": false,
       "stopEvent": {
@@ -139,15 +139,21 @@
       ]
     },
     {
-      "position": 1.5999999999999996,
+      "position": 1.1272727272727272,
       "names": [
         "IntakeCubeFromFloorInstant"
       ]
     },
     {
-      "position": 2.29090909090909,
+      "position": 2.1272727272727265,
       "names": [
         "ReturnWAEHomeTimeout"
+      ]
+    },
+    {
+      "position": 3.0545454545454547,
+      "names": [
+        "ScoreCubeHighAuto"
       ]
     }
   ]

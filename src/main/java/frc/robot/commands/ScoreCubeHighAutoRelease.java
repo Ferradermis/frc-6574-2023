@@ -16,7 +16,6 @@ public class ScoreCubeHighAutoRelease extends SequentialCommandGroup {
   public ScoreCubeHighAutoRelease() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new SetWristIntakeSpeed(-1).withTimeout(1),
-    new ReturnWAEHome());
+    addCommands(new SetWristIntakeSpeed(-1).withTimeout(1));
   }
 }
