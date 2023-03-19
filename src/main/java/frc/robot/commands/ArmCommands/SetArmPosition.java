@@ -10,7 +10,7 @@ import frc.robot.RobotContainer;
 public class SetArmPosition extends CommandBase {
   /** Creates a new SetArmPosition. */
   private double position;
-  private double tolerance = 0.020;
+  private double tolerance = 0.030;
   public SetArmPosition(double position) {
     this.position = position;
     // Use addRequirements() here to declare subsystem dependencies.

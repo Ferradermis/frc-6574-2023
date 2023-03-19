@@ -40,6 +40,7 @@ import frc.robot.commands.WristCommands.ScoreCone;
 import frc.robot.commands.WristCommands.ScoreCube;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.Swerve;
 import frc.robot.subsystems.Wrist;
@@ -76,6 +77,7 @@ public class RobotContainer {
     public static Swerve s_Swerve = new Swerve();
     public static Elevator elevator = new Elevator();
     public static Wrist wrist = new Wrist();
+    public static Intake intake = new Intake();
     public static Arm arm = new Arm();
     public static Limelight limelight = new Limelight();
     

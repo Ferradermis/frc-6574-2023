@@ -17,6 +17,7 @@ public class TeleopSwerve extends CommandBase {
     private DoubleSupplier strafeSup;
     private DoubleSupplier rotationSup;
     private BooleanSupplier robotCentricSup;
+    private double trainingWheels = .3;
 
     public TeleopSwerve(Swerve s_Swerve,
                         DoubleSupplier translationSup,
@@ -39,7 +40,7 @@ public class TeleopSwerve extends CommandBase {
         /* Get Values, Deadband*/
         double translationVal = -MathUtil.applyDeadband(translationSup.getAsDouble(), Constants.stickDeadband);
         double strafeVal = -MathUtil.applyDeadband(strafeSup.getAsDouble(), Constants.stickDeadband);
-        double rotationVal = .3 * MathUtil.applyDeadband(rotationSup.getAsDouble(), Constants.stickDeadband);
+        double rotationVal = trainingWheels * MathUtil.applyDeadband(rotationSup.getAsDouble(), Constants.stickDeadband);
 
         double speedLimit = Constants.Swerve.maxSpeed;
         double angularVelocityLimit = (Constants.Swerve.maxAngularVelocity);

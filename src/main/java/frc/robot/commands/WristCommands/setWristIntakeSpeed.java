@@ -12,14 +12,14 @@ public class SetWristIntakeSpeed extends CommandBase {
   /** Creates a new setWristIntakeSpeed. */
   public SetWristIntakeSpeed(double speed) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.wrist);
+    addRequirements(RobotContainer.intake);
     this.speed = speed;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.wrist.setIntakeSpeed(speed);
+    RobotContainer.intake.setIntakeSpeed(speed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -29,12 +29,12 @@ public class SetWristIntakeSpeed extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.wrist.setIntakeSpeed(0);
+    RobotContainer.intake.setIntakeSpeed(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

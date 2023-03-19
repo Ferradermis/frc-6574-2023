@@ -18,7 +18,6 @@ import frc.robot.Constants;
 public class Wrist extends SubsystemBase {
 
   public CANSparkMax wristMotor;
-  public CANSparkMax intakeMotor;
   public AbsoluteEncoder m_AbsoluteEncoder;
   //private RelativeEncoder wristEncoder;
 
@@ -31,9 +30,7 @@ public class Wrist extends SubsystemBase {
   /** Creates a new Intake. */
   public Wrist() {
     wristMotor = new CANSparkMax(Constants.RobotConstants.wristMotorCANID, MotorType.kBrushless);
-    intakeMotor = new CANSparkMax(Constants.RobotConstants.intakeMotorCANID, MotorType.kBrushless);
     wristMotor.restoreFactoryDefaults();
-    intakeMotor.restoreFactoryDefaults();
 
     wristPIDController = wristMotor.getPIDController();
     m_AbsoluteEncoder = wristMotor.getAbsoluteEncoder(Type.kDutyCycle);
@@ -44,11 +41,9 @@ public class Wrist extends SubsystemBase {
     //m_AbsoluteEncoder.setVelocityConversionFactor(1);
     wristMotor.setInverted(true);
     wristMotor.setIdleMode(IdleMode.kBrake);
-    intakeMotor.setIdleMode(IdleMode.kBrake);
     m_AbsoluteEncoder.setZeroOffset(0.6526145);
 
     wristMotor.setSmartCurrentLimit(45);
-    intakeMotor.setSmartCurrentLimit(25);
 
     kP = 2.8; //2.5 last working value
     kI = 0;
@@ -103,13 +98,7 @@ public class Wrist extends SubsystemBase {
     }
 
 
-  public void setIntakeSpeed(double speed) {
-    intakeMotor.set(speed);
-  }
 
-  public void setOutakeSpeed() {
-    intakeMotor.set(-1);
-  }
 
   public void setSpeed(double speed)
   {

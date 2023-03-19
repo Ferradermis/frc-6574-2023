@@ -24,7 +24,6 @@ public class ReturnWAEHome extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new SetBlinkin(0.61),
       new SetWristIntakeSpeedInstant(0),
       new SetArmPosition(0),
       new ParallelCommandGroup(

@@ -26,8 +26,8 @@ public class IntakeConeFromFloor extends SequentialCommandGroup {
       new SetBlinkin(0.69),
       new SetElevatorPosition(RobotConstants.ELEVATOR_INTAKECUBE_POSITION),
       new SetWristPosition(RobotConstants.WRIST_CONE_FLOOR_INTAKE_POSITION)),
-      new SetArmPosition(RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION),
-      new IntakeCone()
+      new SetArmPosition(RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION)
+      //new IntakeCone()
     );
   }
 }

@@ -10,7 +10,7 @@ import frc.robot.RobotContainer;
 public class SetWristPosition extends CommandBase {
   /** Creates a new SetWristPosition. */
   private double position;
-  private double tolerance = 0.020;
+  private double tolerance = 0.030;
   
   public SetWristPosition(double position) {
     this.position = position;

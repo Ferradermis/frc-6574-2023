@@ -13,14 +13,14 @@ public class ScoreCube extends CommandBase {
   /** Creates a new setWristIntakeSpeed. */
   public ScoreCube() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.wrist);
+    addRequirements(RobotContainer.intake);
     //this.speed = speed;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.wrist.setIntakeSpeed(RobotConstants.SCORE_CUBE_SPEED);
+    RobotContainer.intake.setIntakeSpeed(RobotConstants.SCORE_CUBE_SPEED);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -30,7 +30,7 @@ public class ScoreCube extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.wrist.setIntakeSpeed(0);
+    RobotContainer.intake.setIntakeSpeed(0);
   }
 
   // Returns true when the command should end.
