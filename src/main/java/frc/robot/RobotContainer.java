@@ -123,7 +123,7 @@ public class RobotContainer {
 
 
         double autoVelocityConstraint = 2.5;
-        double autoAccelerationConstraint = 2.7;
+        double autoAccelerationConstraint = 2.5;
 
         // Build out sendable chooser commands for each of the generated PathPlanner routines
         /*File[] fileList = Filesystem.getDeployDirectory().toPath().resolve("output/").toFile().listFiles();
