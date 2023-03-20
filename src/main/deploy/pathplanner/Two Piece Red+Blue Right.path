@@ -112,16 +112,41 @@
         "x": 1.9434373094083754,
         "y": 1.0273112568083909
       },
-      "nextControl": null,
+      "nextControl": {
+        "x": 1.5387759708076592,
+        "y": 1.0945733378379934
+      },
       "holonomicAngle": 179.20427644726064,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": true,
+      "stopEvent": {
+        "names": [
+          "ScoreCubeHighAutoRelease"
+        ],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    },
+    {
+      "anchorPoint": {
+        "x": 5.722074426604994,
+        "y": 1.2060345173321936
+      },
+      "prevControl": {
+        "x": 4.216742644011604,
+        "y": -0.24488768275782044
+      },
+      "nextControl": null,
+      "holonomicAngle": 28.842660135412036,
       "isReversal": false,
       "velOverride": null,
       "isLocked": false,
       "isStopPoint": false,
       "stopEvent": {
-        "names": [
-          "ScoreCubeHighAutoRelease"
-        ],
+        "names": [],
         "executionBehavior": "parallel",
         "waitBehavior": "none",
         "waitTime": 0
