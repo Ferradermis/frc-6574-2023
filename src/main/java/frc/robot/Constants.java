@@ -11,7 +11,7 @@ import frc.lib.util.COTSFalconSwerveConstants;
 import frc.lib.util.SwerveModuleConstants;
 
 public final class Constants {
-    public static final double stickDeadband = 0.1;
+    public static final double stickDeadband = 0.05;
 
     public static final class Swerve {
         public static final int pigeonID = 13;
@@ -163,7 +163,8 @@ public final class Constants {
         public static final double ELEVATOR_LOW_POSITION = 0;
         public static final double ELEVATOR_MID_POSITION = 20.00;
         public static final double ELEVATOR_HIGH_POSITION = 32;
-        public static final double ELEVATOR_CHUTE_POSITION = 20.00;
+        public static final double ELEVATOR_CUBE_CHUTE_POSITION = 20.00;
+        public static final double ELEVATOR_CONE_CHUTE_POSITION = 25.00;
 
         /* Wrist position constants */
         public static final double WRIST_HOME_POSITION = .042;
@@ -177,7 +178,7 @@ public final class Constants {
         public static final double WRIST_CUBE_MIDSCORE_POSITION = 0;
         public static final double WRIST_CUBE_HIGHSCORE_POSITION = 0;
 
-        public static final double WRIST_CHUTE_POSITION = .12;
+        public static final double WRIST_CHUTE_POSITION = .998; //.03 works for cone intake if we drive back a bit 
 
         /* Wrist intake constants */
         public static final double INTAKE_CONE_SPEED = -1;

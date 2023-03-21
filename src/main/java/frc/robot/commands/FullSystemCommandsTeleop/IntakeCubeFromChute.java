@@ -9,23 +9,23 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.RobotConstants;
 import frc.robot.commands.ArmCommands.SetArmPosition;
 import frc.robot.commands.ElevatorCommands.SetElevatorPosition;
-import frc.robot.commands.WristCommands.IntakeCone;
+import frc.robot.commands.WristCommands.IntakeCube;
 import frc.robot.commands.WristCommands.SetWristPosition;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class IntakeConeFromChute extends SequentialCommandGroup {
+public class IntakeCubeFromChute extends SequentialCommandGroup {
   /** Creates a new ScoreConeMid. */
-  public IntakeConeFromChute() {
+  public IntakeCubeFromChute() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new SetElevatorPosition(RobotConstants.ELEVATOR_CONE_CHUTE_POSITION),
+      new SetElevatorPosition(RobotConstants.ELEVATOR_CUBE_CHUTE_POSITION),
       new ParallelCommandGroup(
                                new SetWristPosition(RobotConstants.WRIST_CHUTE_POSITION),
                                new SetArmPosition(RobotConstants.ARM_CHUTE_POSITION),
-                               new IntakeCone())
+                               new IntakeCube())
       );
       //new SetArmPosition(RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION)
   }

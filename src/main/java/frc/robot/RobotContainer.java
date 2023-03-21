@@ -30,8 +30,11 @@ import frc.robot.commands.ScoreConeCubeHighRelease;
 import frc.robot.commands.ScoreCubeHighAuto;
 import frc.robot.commands.ScoreCubeHighAutoRelease;
 import frc.robot.commands.TeleopSwerve;
+import frc.robot.commands.TeleopSwervePrecise;
+import frc.robot.commands.FullSystemCommandsTeleop.IntakeConeFromChute;
 import frc.robot.commands.FullSystemCommandsTeleop.IntakeConeFromFloor;
 import frc.robot.commands.FullSystemCommandsTeleop.IntakeConeFromShelf;
+import frc.robot.commands.FullSystemCommandsTeleop.IntakeCubeFromChute;
 import frc.robot.commands.FullSystemCommandsTeleop.IntakeCubeFromFloor;
 import frc.robot.commands.FullSystemCommandsTeleop.ReturnWAEHome;
 import frc.robot.commands.FullSystemCommandsTeleop.ScoreConeCubeHigh;
@@ -179,6 +182,14 @@ public class RobotContainer {
             () -> true
             ));
 
+        driverController.rightTrigger().whileTrue(new TeleopSwervePrecise( //precision mode for driver
+            s_Swerve, 
+            () -> driverController.getRawAxis(translationAxis),
+            () -> driverController.getRawAxis(strafeAxis),
+            () -> -driverController.getRawAxis(rotationAxis),
+            () -> false
+            ));
+
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
         driverController.x().onTrue(new InstantCommand(() -> s_Swerve.resetModulesToAbsolute()));
         driverController.rightBumper().onTrue(new IntakeCubeFromFloor());
@@ -187,12 +198,14 @@ public class RobotContainer {
         //driverController.start().onTrue(new AutoLevelOnChargingStation());
 
         /* Operator Buttons */
-        operatorController.b().onTrue(new ReturnWAEHomeTimeout());
         operatorController.rightBumper().whileTrue(new ScoreCube());
         operatorController.leftBumper().whileTrue(new ScoreCone());
         operatorController.a().onTrue(new ScoreConeCubeMid());
+        operatorController.b().onTrue(new ReturnWAEHomeTimeout());
         operatorController.x().onTrue(new ScoreConeCubeHigh());
         operatorController.y().onTrue(new IntakeConeFromShelf());
+        operatorController.povDown().onTrue(new IntakeCubeFromChute());
+        operatorController.povUp().onTrue(new IntakeConeFromChute());
 
     }
 
