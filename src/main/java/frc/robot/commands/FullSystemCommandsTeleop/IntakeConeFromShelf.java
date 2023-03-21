@@ -23,9 +23,9 @@ public class IntakeConeFromShelf extends SequentialCommandGroup {
     addCommands(
       new SetElevatorPosition(RobotConstants.ELEVATOR_HIGH_POSITION),
       new ParallelCommandGroup(
-                               new SetWristPosition(RobotConstants.WRIST_CONE_FLOOR_INTAKE_POSITION),
-                               new SetArmPosition(RobotConstants.ARM_CONE_HIGHSCORE_POSITION),
-                               new IntakeCone())
+                               new SetWristPosition(RobotConstants.WRIST_SHELF_POSITION),
+                               new SetArmPosition(RobotConstants.ARM_SHELF_POSITION)),
+                               new IntakeCone()
       );
       //new SetArmPosition(RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION)
   }

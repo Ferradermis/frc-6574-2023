@@ -179,6 +179,7 @@ public final class Constants {
         public static final double WRIST_CUBE_HIGHSCORE_POSITION = 0;
 
         public static final double WRIST_CHUTE_POSITION = .998; //.03 works for cone intake if we drive back a bit 
+        public static final double WRIST_SHELF_POSITION = .175;
 
         /* Wrist intake constants */
         public static final double INTAKE_CONE_SPEED = -1;
@@ -201,5 +202,6 @@ public final class Constants {
         public static final double ARM_CUBE_HIGHSCORE_POSITION = 0;
 
         public static final double ARM_CHUTE_POSITION = 0;
+        public static final double ARM_SHELF_POSITION = 0.15;
     }
 }
