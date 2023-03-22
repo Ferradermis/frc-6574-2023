@@ -49,9 +49,6 @@ public class TeleopSwerve extends CommandBase {
             speedLimit *= 0.3;
             //angularVelocityLimit *= 0.3;
         }
-        //else if (RobotContainer.driver.getTrigger() == true) {
-        //    speedLimit *= 1.5;
-        //}
 
         /* Drive */
         s_Swerve.drive(
