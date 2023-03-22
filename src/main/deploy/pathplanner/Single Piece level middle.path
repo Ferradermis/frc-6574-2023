@@ -7,8 +7,35 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.3610037243493704,
-        "y": 2.722147833054449
+        "x": 3.497044259045783,
+        "y": 2.706342848583134
+      },
+      "holonomicAngle": 180.0,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": false,
+      "stopEvent": {
+        "names": [
+          "ScoreConeCubeHighRelease"
+        ],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    },
+    {
+      "anchorPoint": {
+        "x": 6.226225443903879,
+        "y": 2.694923680445652
+      },
+      "prevControl": {
+        "x": 5.1414044708431295,
+        "y": 2.68350451230817
+      },
+      "nextControl": {
+        "x": 7.247252103730289,
+        "y": 2.7056713294964565
       },
       "holonomicAngle": 180.0,
       "isReversal": false,
@@ -24,12 +51,12 @@
     },
     {
       "anchorPoint": {
-        "x": 3.877273140963145,
-        "y": 2.7596946997172687
+        "x": 3.8624576394451937,
+        "y": 2.694923680445652
       },
       "prevControl": {
-        "x": 2.863507741067005,
-        "y": 2.637667383063104
+        "x": 5.322840878872975,
+        "y": 2.7559373387727346
       },
       "nextControl": null,
       "holonomicAngle": 180.0,
@@ -45,7 +72,7 @@
       }
     }
   ],
-  "maxVelocity": 1.0,
+  "maxVelocity": 2.0,
   "maxAcceleration": null,
   "isReversed": null,
   "markers": []
