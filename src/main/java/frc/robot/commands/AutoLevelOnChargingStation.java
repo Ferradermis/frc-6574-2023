@@ -15,7 +15,7 @@ public class AutoLevelOnChargingStation extends CommandBase {
   private double error;
   private double currentAngle;
   private double drivePower;
-  private double kP = 0.007;
+  private double kP = 0.006;
 
   public AutoLevelOnChargingStation() {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -72,10 +72,10 @@ public class AutoLevelOnChargingStation extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() { //commenting out lines 75 through 77 should allow it to balance indefinitely; let driver take over in teleop if needed
-    if (Math.abs(error) < 1) {
-      return true;
-    }
-    else if (RobotContainer.driver.getRawAxis(XboxController.Axis.kLeftY.value) > 0.1) {
+    //if (Math.abs(error) < 1) {
+    //  return true;
+    //}
+    if (RobotContainer.driver.getRawAxis(XboxController.Axis.kLeftY.value) > 0.1) {
       return true;
     }
     else {

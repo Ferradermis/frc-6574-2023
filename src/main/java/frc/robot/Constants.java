@@ -164,7 +164,7 @@ public final class Constants {
         public static final double ELEVATOR_MID_POSITION = 20.00;
         public static final double ELEVATOR_HIGH_POSITION = 32;
         public static final double ELEVATOR_CUBE_CHUTE_POSITION = 20.00;
-        public static final double ELEVATOR_CONE_CHUTE_POSITION = 25.00;
+        public static final double ELEVATOR_CONE_CHUTE_POSITION = 24.85;
 
         /* Wrist position constants */
         public static final double WRIST_HOME_POSITION = .042;
