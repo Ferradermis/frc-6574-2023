@@ -190,6 +190,14 @@ public class RobotContainer {
             () -> false
             ));
 
+        driverController.a().whileTrue(new TeleopSwervePrecise( //precision mode for driver, robot centric
+        s_Swerve, 
+        () -> driverController.getRawAxis(translationAxis),
+        () -> driverController.getRawAxis(strafeAxis),
+        () -> -driverController.getRawAxis(rotationAxis),
+        () -> true
+        ));
+
         driverController.y().onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
         driverController.x().onTrue(new InstantCommand(() -> s_Swerve.resetModulesToAbsolute()));
         driverController.rightBumper().onTrue(new IntakeCubeFromFloor());
