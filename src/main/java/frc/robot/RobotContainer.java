@@ -94,7 +94,7 @@ public class RobotContainer {
         new PIDConstants(Constants.AutoConstants.kPYController, 0.0, 0.0), // PID constants to correct for rotation error (used to create the rotation controller)
         s_Swerve::setModuleStates, // Module states consumer used to output to the drive subsystem
         eventMap,
-        false, // Should the path be automatically mirrored depending on alliance color. Optional, defaults to true
+        true, // Should the path be automatically mirrored depending on alliance color. Optional, defaults to true
         s_Swerve // The drive subsystem. Used to properly set the requirements of path following commands
     );
     SendableChooser<CommandBase> autoChooser = new SendableChooser<>();
@@ -136,11 +136,11 @@ public class RobotContainer {
             }
         }*/
 
-        autoChooser.addOption("Two Piece Left", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Two Piece Red+Blue Left", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
-        autoChooser.addOption("Two Piece Right", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Two Piece Red+Blue Right", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
+        autoChooser.addOption("Two Piece Flat Side", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Two Piece Flat Side", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
+        autoChooser.addOption("Two Piece Cable Protector", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Two Piece Cable Protector", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
         autoChooser.addOption("Score and Drive Back", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Score and Drive Back", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
-        autoChooser.addOption("One Piece Level Left", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("One Piece Level Left", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
-        autoChooser.addOption("One Piece Level Right", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("One Piece Level Right", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
+        autoChooser.addOption("One Piece Level Flat Side", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("One Piece Level Flat Side", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
+        autoChooser.addOption("One Piece Level Cable Protector", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("One Piece Level Cable Protector", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
         autoChooser.addOption("One Piece Level Middle", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Single Piece Level Middle", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
         //autoChooser.addOption("TEST: Score Cone Timing", new ScoreConeCubeHighRelease());
         //autoChooser.addOption("TEST: Shoot Cube High", new ScoreCubeHighAuto());
