@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.AutoLevelOnChargingStation;
 import frc.robot.commands.IntakeConeFromFloorInstant;
@@ -123,6 +124,7 @@ public class RobotContainer {
         eventMap.put("AutoLevelOnChargingStation", new AutoLevelOnChargingStation());
         eventMap.put("ScoreCubeHighAuto", new ScoreCubeHighAuto());
         eventMap.put("ScoreCubeHighAutoRelease", new ScoreCubeHighAutoRelease());
+        eventMap.put("WaitTwoSeconds", new WaitCommand(2));
 
 
         double autoVelocityConstraint = 2.5;
@@ -214,6 +216,7 @@ public class RobotContainer {
         operatorController.y().onTrue(new IntakeConeFromShelf());
         operatorController.povDown().onTrue(new IntakeCubeFromChute());
         operatorController.povUp().onTrue(new IntakeConeFromChute());
+        operatorController.povLeft().onTrue(new IntakeConeFromChute());
 
     }
 
