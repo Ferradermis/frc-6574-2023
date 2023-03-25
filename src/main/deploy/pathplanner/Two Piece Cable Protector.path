@@ -160,7 +160,7 @@
     {
       "position": 0.0,
       "names": [
-        "ScoreConeCubeHighRelease"
+        "ScoreCubeHighRelease"
       ]
     },
     {
@@ -173,12 +173,6 @@
       "position": 2.1272727272727265,
       "names": [
         "ReturnWAEHomeTimeout"
-      ]
-    },
-    {
-      "position": 3.0545454545454547,
-      "names": [
-        "ScoreCubeHighAuto"
       ]
     }
   ]

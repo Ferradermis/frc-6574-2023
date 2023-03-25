@@ -81,7 +81,7 @@ public final class Constants {
 
         /* Swerve Profiling Values */
         /** Meters per Second */
-        public static final double maxSpeed = 3.0;
+        public static final double maxSpeed = 3.5;
         /** Radians per Second */
         public static final double maxAngularVelocity = 10.0; //TODO: This must be tuned to specific robot
 
@@ -178,7 +178,8 @@ public final class Constants {
         public static final double WRIST_CUBE_MIDSCORE_POSITION = 0;
         public static final double WRIST_CUBE_HIGHSCORE_POSITION = 0;
 
-        public static final double WRIST_CHUTE_POSITION = .998; //.03 works for cone intake if we drive back a bit 
+        public static final double WRIST_CONE_CHUTE_POSITION = .121; //working at .121
+        public static final double WRIST_CHUTE_POSITION = .998; //.03 works for cone intake if we drive back a bit; .998 is working value
         public static final double WRIST_SHELF_POSITION = .175;
 
         /* Wrist intake constants */
@@ -202,6 +203,7 @@ public final class Constants {
         public static final double ARM_CUBE_HIGHSCORE_POSITION = 0;
 
         public static final double ARM_CHUTE_POSITION = 0;
+        public static final double ARM_CONE_CHUTE_POSITION = 0.12; //working at .12
         public static final double ARM_SHELF_POSITION = 0.15;
     }
 }

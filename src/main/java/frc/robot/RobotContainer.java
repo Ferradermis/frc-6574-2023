@@ -29,9 +29,11 @@ import frc.robot.commands.IntakeCubeFromFloorInstant;
 import frc.robot.commands.ScoreConeCubeHighRelease;
 import frc.robot.commands.ScoreCubeHighAuto;
 import frc.robot.commands.ScoreCubeHighAutoRelease;
+import frc.robot.commands.ScoreCubeHighRelease;
 import frc.robot.commands.TeleopSwerve;
 import frc.robot.commands.TeleopSwervePrecise;
 import frc.robot.commands.FullSystemCommandsTeleop.IntakeConeFromChute;
+import frc.robot.commands.FullSystemCommandsTeleop.IntakeConeFromChuteShort;
 import frc.robot.commands.FullSystemCommandsTeleop.IntakeConeFromFloor;
 import frc.robot.commands.FullSystemCommandsTeleop.IntakeConeFromShelf;
 import frc.robot.commands.FullSystemCommandsTeleop.IntakeCubeFromChute;
@@ -125,6 +127,7 @@ public class RobotContainer {
         eventMap.put("ScoreCubeHighAuto", new ScoreCubeHighAuto());
         eventMap.put("ScoreCubeHighAutoRelease", new ScoreCubeHighAutoRelease());
         eventMap.put("WaitTwoSeconds", new WaitCommand(2));
+        eventMap.put("ScoreCubeHighRelease", new ScoreCubeHighRelease());
 
 
         double autoVelocityConstraint = 2.5;
@@ -216,7 +219,7 @@ public class RobotContainer {
         operatorController.y().onTrue(new IntakeConeFromShelf());
         operatorController.povDown().onTrue(new IntakeCubeFromChute());
         operatorController.povUp().onTrue(new IntakeConeFromChute());
-        operatorController.povLeft().onTrue(new IntakeConeFromChute());
+        operatorController.povLeft().onTrue(new IntakeConeFromChuteShort());
 
     }
 

@@ -15,7 +15,7 @@ public class AutoLevelOnChargingStation extends CommandBase {
   private double error;
   private double currentAngle;
   private double drivePower;
-  private double kP = 0.005875;
+  private double kP = 0.0065;
 
   public AutoLevelOnChargingStation() {
     // Use addRequirements() here to declare subsystem dependencies.
