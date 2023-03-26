@@ -82,14 +82,14 @@
         "y": 4.613343927542556
       },
       "prevControl": {
-        "x": 5.084308630155723,
-        "y": 4.6476014319550005
+        "x": 5.069792816437504,
+        "y": 4.824037067786484
       },
       "nextControl": {
-        "x": 3.415639528869203,
-        "y": 4.6093876357423325
+        "x": 2.741684004109819,
+        "y": 4.492919110587201
       },
-      "holonomicAngle": 180.0,
+      "holonomicAngle": -179.5982723825958,
       "isReversal": false,
       "velOverride": null,
       "isLocked": false,
@@ -105,16 +105,16 @@
     },
     {
       "anchorPoint": {
-        "x": 1.89,
-        "y": 4.20225387459322
+        "x": 1.966875728623252,
+        "y": 4.1679963701807745
       },
       "prevControl": {
-        "x": 1.7758083186251838,
-        "y": 4.179415538318257
+        "x": 1.9367450606236267,
+        "y": 4.280484025258618
       },
       "nextControl": {
-        "x": 2.0041916813748157,
-        "y": 4.2250922108681825
+        "x": 2.1351048023463575,
+        "y": 3.539942122619288
       },
       "holonomicAngle": 180.0,
       "isReversal": false,
@@ -132,21 +132,23 @@
     },
     {
       "anchorPoint": {
-        "x": 6.260482948316324,
-        "y": 3.779744653506401
+        "x": 3.9994876570949724,
+        "y": 3.288720423594694
       },
       "prevControl": {
-        "x": 5.426883674280169,
-        "y": 5.195721502554117
+        "x": 2.3665466134351067,
+        "y": 3.163109574082397
       },
       "nextControl": null,
-      "holonomicAngle": -33.070677822761766,
+      "holonomicAngle": 180.0,
       "isReversal": false,
       "velOverride": null,
       "isLocked": false,
       "isStopPoint": false,
       "stopEvent": {
-        "names": [],
+        "names": [
+          "AutoLevelOnChargingStation"
+        ],
         "executionBehavior": "parallel",
         "waitBehavior": "none",
         "waitTime": 0
@@ -154,17 +156,17 @@
     }
   ],
   "maxVelocity": 2.5,
-  "maxAcceleration": 2.0,
+  "maxAcceleration": 2.75,
   "isReversed": null,
   "markers": [
     {
-      "position": 0.9090909090909092,
+      "position": 0.91,
       "names": [
         "IntakeCubeFromFloorInstant"
       ]
     },
     {
-      "position": 2.0654545454545197,
+      "position": 2.07,
       "names": [
         "ReturnWAEHomeTimeout"
       ]

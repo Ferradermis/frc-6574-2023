@@ -26,7 +26,7 @@ public class ScoreCubeHighRelease extends SequentialCommandGroup {
       new ParallelCommandGroup(
                                new SetWristPosition(RobotConstants.WRIST_CONE_HIGHSCORE_POSITION).withTimeout(1),
                                new SetArmPosition(RobotConstants.ARM_CONE_HIGHSCORE_POSITION)).withTimeout(1),
-      new SetWristIntakeSpeed(-1).withTimeout(.75),
+      new SetWristIntakeSpeed(-1).withTimeout(.5),
       new ReturnWAEHomeTimeout()
 
     );
