@@ -41,6 +41,7 @@ import frc.robot.commands.FullSystemCommandsTeleop.IntakeCubeFromFloor;
 import frc.robot.commands.FullSystemCommandsTeleop.ReturnWAEHome;
 import frc.robot.commands.FullSystemCommandsTeleop.ReturnWAEHomeTimeout;
 import frc.robot.commands.FullSystemCommandsTeleop.ScoreConeCubeHigh;
+import frc.robot.commands.FullSystemCommandsTeleop.ScoreConeCubeLow;
 import frc.robot.commands.FullSystemCommandsTeleop.ScoreConeCubeMid;
 import frc.robot.commands.WristCommands.ScoreCone;
 import frc.robot.commands.WristCommands.ScoreCube;
@@ -148,6 +149,7 @@ public class RobotContainer {
         autoChooser.addOption("One Piece Level Cable Protector", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("One Piece Level Cable Protector", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
         autoChooser.addOption("One Piece Level Middle", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Single Piece Level Middle", new PathConstraints(autoVelocityConstraint, autoAccelerationConstraint)))));
         autoChooser.addOption("Two Piece Flat Side Balance", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Two Piece Flat Side Balance", new PathConstraints(2.5, 3.00)))));
+        autoChooser.addOption("Two Piece Same Orientation", autoBuilder.fullAuto(new ArrayList<PathPlannerTrajectory>(PathPlanner.loadPathGroup("Two Piece Same Orientation", new PathConstraints(2.5, 3.00)))));
         //autoChooser.addOption("TEST: Score Cone Timing", new ScoreConeCubeHighRelease());
         //autoChooser.addOption("TEST: Shoot Cube High", new ScoreCubeHighAuto());
         //autoChooser.addOption("TEST: Shoot Cone High", new ScoreConeCubeHighRelease());
@@ -221,6 +223,7 @@ public class RobotContainer {
         operatorController.povDown().onTrue(new IntakeCubeFromChute());
         operatorController.povUp().onTrue(new IntakeConeFromChute());
         operatorController.povLeft().onTrue(new IntakeConeFromChuteShort());
+        operatorController.povRight().onTrue(new ScoreConeCubeLow());
 
     }
 

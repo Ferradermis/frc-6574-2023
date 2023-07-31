@@ -159,10 +159,11 @@ public final class Constants {
         //Gatorvator 🐊
 
         public static final double ELEVATOR_HOME_POSITION = 0;
-        public static final double ELEVATOR_INTAKECUBE_POSITION = 2.85;
+        public static final double ELEVATOR_INTAKECUBE_POSITION = 5.023;
         public static final double ELEVATOR_LOW_POSITION = 0;
         public static final double ELEVATOR_MID_POSITION = 20.00;
         public static final double ELEVATOR_HIGH_POSITION = 32;
+        public static final double ELEVATOR_LOW_SCORING_POSITION = 2.61;
         public static final double ELEVATOR_CUBE_CHUTE_POSITION = 20.00;
         public static final double ELEVATOR_CONE_CHUTE_POSITION = 24.85;
 
@@ -172,11 +173,13 @@ public final class Constants {
         public static final double WRIST_CONE_LOWSCORE_POSITION = 0;
         public static final double WRIST_CONE_MIDSCORE_POSITION = .12;
         public static final double WRIST_CONE_HIGHSCORE_POSITION = .08;
+        
 
-        public static final double WRIST_CUBE_FLOOR_INTAKE_POSITION = .248;
+        public static final double WRIST_CUBE_FLOOR_INTAKE_POSITION = .180;
         public static final double WRIST_CUBE_LOWSCORE_POSITION = 0;
         public static final double WRIST_CUBE_MIDSCORE_POSITION = 0;
         public static final double WRIST_CUBE_HIGHSCORE_POSITION = 0;
+        public static final double WRIST_CUBE_NEW_LOWSCORE_POSITION = 0.07;
 
         public static final double WRIST_CONE_CHUTE_POSITION = .121; //working at .121
         public static final double WRIST_CHUTE_POSITION = .998; //.03 works for cone intake if we drive back a bit; .998 is working value
@@ -201,6 +204,7 @@ public final class Constants {
         public static final double ARM_CUBE_LOWSCORE_POSITION = 0;
         public static final double ARM_CUBE_MIDSCORE_POSITION = 0;
         public static final double ARM_CUBE_HIGHSCORE_POSITION = 0;
+        public static final double ARM_CUBE_NEW_LOWSCORE_POSITION = 0.03;
 
         public static final double ARM_CHUTE_POSITION = 0;
         public static final double ARM_CONE_CHUTE_POSITION = 0.12; //working at .12
