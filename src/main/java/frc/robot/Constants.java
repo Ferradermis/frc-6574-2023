@@ -16,7 +16,7 @@ public final class Constants {
     public static final class Swerve {
         public static final int pigeonID = 13;
         public static final boolean invertGyro = false;
-        public static final double swerveSpeedModifier = .6; // Always ensure Gyro is CCW+ CW-
+        public static final double swerveSpeedModifier = .6; // Always ensure Gyro is CCW+ CW- 
         public static final double turboSpeedModifier = 1;
         public static final COTSFalconSwerveConstants chosenModule =
             COTSFalconSwerveConstants.SDSMK4i(COTSFalconSwerveConstants.driveGearRatios.SDSMK4i_L2);
