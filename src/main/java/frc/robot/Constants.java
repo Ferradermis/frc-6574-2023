@@ -208,6 +208,6 @@ public final class Constants {
 
         public static final double ARM_CHUTE_POSITION = 0;
         public static final double ARM_CONE_CHUTE_POSITION = 0.12; //working at .12
-        public static final double ARM_SHELF_POSITION = 0.15;
+        public static final double ARM_SHELF_POSITION = 0.16;
     }
 }
