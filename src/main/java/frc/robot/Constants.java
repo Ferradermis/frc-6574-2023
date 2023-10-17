@@ -195,12 +195,12 @@ public final class Constants {
 
         /* Arm position constants */
         public static final double ARM_HOME_POSITION = 0;
-        public static final double ARM_CONE_FLOOR_INTAKE_POSITION = 0;
+        public static final double ARM_CONE_FLOOR_INTAKE_POSITION = .026;
         public static final double ARM_CONE_LOWSCORE_POSITION = 0;
         public static final double ARM_CONE_MIDSCORE_POSITION = .1;
         public static final double ARM_CONE_HIGHSCORE_POSITION = .15;
 
-        public static final double ARM_CUBE_FLOOR_INTAKE_POSITION = .026;
+        public static final double ARM_CUBE_FLOOR_INTAKE_POSITION = 0;
         public static final double ARM_CUBE_LOWSCORE_POSITION = 0;
         public static final double ARM_CUBE_MIDSCORE_POSITION = 0;
         public static final double ARM_CUBE_HIGHSCORE_POSITION = 0;

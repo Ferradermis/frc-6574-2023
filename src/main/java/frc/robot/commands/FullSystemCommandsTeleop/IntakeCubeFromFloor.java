@@ -6,6 +6,7 @@ package frc.robot.commands.FullSystemCommandsTeleop;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import frc.robot.Constants.RobotConstants;
+import frc.robot.commands.ArmCommands.SetArmPosition;
 import frc.robot.commands.ElevatorCommands.SetElevatorPosition;
 import frc.robot.commands.WristCommands.IntakeCube;
 import frc.robot.commands.WristCommands.SetWristPosition;
@@ -21,6 +22,7 @@ public class IntakeCubeFromFloor extends ParallelCommandGroup {
     addCommands(
       new SetElevatorPosition(RobotConstants.ELEVATOR_INTAKECUBE_POSITION),
       new SetWristPosition(RobotConstants.WRIST_CUBE_FLOOR_INTAKE_POSITION),
+      new SetArmPosition(RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION),
       new IntakeCube()
       );
       //new SetArmPosition(RobotConstants.ARM_CUBE_FLOOR_INTAKE_POSITION)
